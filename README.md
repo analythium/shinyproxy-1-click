@@ -1,1 +1,1 @@
-# shinyproxy-1-click
+# Shinyproxy 1-Click App
