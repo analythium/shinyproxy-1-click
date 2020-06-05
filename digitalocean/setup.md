@@ -509,7 +509,7 @@ you should see something like:
 
 ### Setting cron job to update images
 
-We add a couple of lines to cron. Some commented out.
+We add a couple of lines to cron. All commented out but there if needed.
 We need to restart the webhook daemon restart regularly
 because it is not updating when the certificate is renewed.
 
@@ -519,7 +519,7 @@ these lines to the bottom and save it:
 
 ```bash
 # Restart webhook daemon at 2:00am every day
-0 2 * * * systemctl restart webhook.service
+#0 2 * * * systemctl restart webhook.service
 
 # Update all images at 3:00am every Sunday
 #0 3 * * 0 webhook-pull-all-gitlab
