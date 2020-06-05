@@ -77,8 +77,7 @@ Note: we are testing over port 9001, but the real webhook is listening on port 9
 We use `curl -i` to get the response headers: 200 is what we want.
 
 ```bash
-curl -i --header "X-Gitlab-Token: secret_token_1234" \
-  https://test.side-r.com:9001/hooks/pull-all-gitlab
+curl -i --header "X-Gitlab-Token: secret_token_1234" http://YOUR_IP_OR_DOMAIN:9000/hooks/pull-all-gitlab
 ```
 
 Using form data (url encoded, default header "Content-Type: application/x-www-form-urlencoded"):
@@ -86,7 +85,7 @@ Using form data (url encoded, default header "Content-Type: application/x-www-fo
 ```bash
 curl -i --header "X-Gitlab-Token: secret_token_1234" \
   -X POST -d 'image_name=analythium/shinyproxy-demo:latest' \
-  https://test.side-r.com:9001/hooks/pull-one-gitlab
+  https://YOUR_IP_OR_DOMAIN:9000/hooks/pull-one-gitlab
 ```
 
 Need to declare content-type header, payload is treated as form data by curl
@@ -96,7 +95,7 @@ curl -i --header "X-Gitlab-Token: secret_token_1234" \
   --header "Content-Type: application/json" \
   --request POST \
   --data '{"image_name":"analythium/shinyproxy-demo:latest"}' \
-  https://test.side-r.com:9001/hooks/pull-one-gitlab
+  https://YOUR_IP_OR_DOMAIN:9000/hooks/pull-one-gitlab
 ```
 
 #### Docker Hub
@@ -122,5 +121,5 @@ image name and the tag.
 }
 ```
 
-Set webhook url as https://test.side-r.com:9001/hooks/pull-one-dockerhub
+Set webhook url as https://YOUR_IP_OR_DOMAIN:9000/hooks/pull-one-dockerhub
 
