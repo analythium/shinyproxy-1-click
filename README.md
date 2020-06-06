@@ -1,4 +1,4 @@
-# Shinyproxy 1-Click App
+# ShinyProxy 1-Click App
 
 
 [DigitalOcean 1-Click App](digitalocean/README.md)
