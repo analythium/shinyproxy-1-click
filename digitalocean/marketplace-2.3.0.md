@@ -1,6 +1,8 @@
-# Marketplace submission text
+# DigitalOcean Marketplace submission
 
 > ShinyProxy 2.3.0
+
+https://marketplace.digitalocean.com/apps/shinyproxy
 
 OS version: Ubuntu 18.04
 
