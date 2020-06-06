@@ -64,12 +64,12 @@ Then restart ShinyProxy to take effect using `sudo service shinyproxy restart`.
 
 ### Advanced configuration
 
-Follow the [1-Click aApp documentation](https://github.com/analythium/shinyproxy-1-click/blob/master/digitalocean/secure.md)
+Follow the [1-Click App documentation](https://github.com/analythium/shinyproxy-1-click/blob/master/digitalocean/secure.md)
 to set up SSL certificate to serve the Shiny apps over HTTPS.
 
 Continuous integration and continuous delivery (CI/CD) can be added via webhooks.
 A daemon process listens on port 9000 for GET and POST requests.
-The [1-Click aApp documentation](https://github.com/analythium/shinyproxy-1-click/blob/master/digitalocean/secure.md) explains
+The [1-Click App documentation](https://github.com/analythium/shinyproxy-1-click/blob/master/digitalocean/secure.md) explains
 how to set up CI/CD with GitLab pipelines and container registry,
 or with a combination of GitHub and Docker Hub (public or private repositories).
 The hooks can be run for all or individual images.
