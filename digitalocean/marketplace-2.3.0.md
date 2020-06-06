@@ -1,6 +1,6 @@
 # Marketplace submission text
 
-> ShinyProxy 2.3.0.1
+> ShinyProxy 2.3.0
 
 OS version: Ubuntu 18.04
 
