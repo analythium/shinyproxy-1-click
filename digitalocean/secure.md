@@ -74,10 +74,11 @@ Note: we are testing over port 9001, but the real webhook is listening on port 9
 
 #### GitLab
 
-We use `curl -i` to get the response headers: 200 is what we want.
+We use `curl -i` to get the response headers: 200 is what we want. Make sure to use http
+protocol (and not https) if SSL certificate is not set up and used.
 
 ```bash
-curl -i --header "X-Gitlab-Token: secret_token_1234" http://YOUR_IP_OR_DOMAIN:9000/hooks/pull-all-gitlab
+curl -i --header "X-Gitlab-Token: secret_token_1234" https://YOUR_IP_OR_DOMAIN:9000/hooks/pull-all-gitlab
 ```
 
 Using form data (url encoded, default header "Content-Type: application/x-www-form-urlencoded"):
