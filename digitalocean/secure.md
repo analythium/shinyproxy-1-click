@@ -61,6 +61,10 @@ the add `-secure -cert /etc/letsencrypt/live/test.side-r.com/cert.pem -key /etc/
 Use private key (`privkey.pem`) and `fullchain.pem` which is concatenation of the public key
 (`cert.pem`) and the certificate chain (`chain.pem`).
 
+Use `crontab -e` and uncomment the line `0 2 * * * systemctl restart webhook.service`:
+we need to restart the webhook daemon regularly (daily in this case)
+because it is not updating when the TLS certificate is renewed.
+
 ### Testing the webhook with curl
 
 Test it in `-verbose` mode: change example.com to your domain.
