@@ -510,8 +510,8 @@ you should see something like:
 ### Setting cron job to update images
 
 We add a couple of lines to cron. All commented out but there if needed.
-We need to restart the webhook daemon restart regularly
-because it is not updating when the certificate is renewed.
+We need to restart the webhook daemon regularly
+because it is not updating when the TLS certificate is renewed.
 
 We have access to the cron utility: run `crontab -e`, 
 pick an editor (nano) if you haven’t done so already and then add 
