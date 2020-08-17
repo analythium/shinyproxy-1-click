@@ -4,7 +4,7 @@
 > ShinyProxy builds on enterprise Java and Docker technology to provide authentication,
 > authorization, resource allocation, and monitoring.
 
-https://marketplace.digitalocean.com/apps/shinyproxy
+[![](https://raw.githubusercontent.com/analythium/shinyproxy-1-click/master/digitalocean/images/do-btn-blue.svg)](https://marketplace.digitalocean.com/apps/shinyproxy)
 
 ## Summary
 
@@ -23,8 +23,6 @@ in fully-tested app environments.
 
 You can use this [referral link](https://m.do.co/c/a8041699739d) to sign up to
 DigitalOcean if you don't yet have an account.
-
-[![](https://raw.githubusercontent.com/analythium/shinyproxy-1-click/master/digitalocean/images/do-btn-blue.svg)](https://marketplace.digitalocean.com/apps/shinyproxy)
 
 ## Versions
 
