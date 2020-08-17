@@ -21,9 +21,10 @@ API for integrating of Shiny apps in larger applications.
 The 1-Click option makes it easier than ever to deploy ShinyProxy on DigitalOcean droplets
 in fully-tested app environments.
 
-## Versions
+You can use this [referral link](https://m.do.co/c/a8041699739d) to sign up to
+DigitalOcean if you don't yet have an account.
 
-[ShinyProxy 2.3.0.1](marketplace-2.3.0.1.md)
+## Versions
 
 [ShinyProxy 2.3.0](marketplace-2.3.0.md)
 

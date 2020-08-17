@@ -1,6 +1,6 @@
 # DigitalOcean Marketplace submission
 
-> ShinyProxy 2.3.0.1
+> ShinyProxy 2.3.0.1 - in development and not yet published
 
 https://marketplace.digitalocean.com/apps/shinyproxy
 
@@ -57,7 +57,7 @@ to [configure](https://shinyproxy.io/configuration/) your instance. Pay special 
 to authentication: it is set to `simple`. You should change user names and passwords,
 possibly the authentication type.
 
-Pull Docker images and add those to the configuration file to 
+Pull Docker images and add those to the configuration file to
 [deploy your Shiny apps](https://shinyproxy.io/deploying-apps/).
 
 Then restart ShinyProxy to take effect using `sudo service shinyproxy restart`.
@@ -77,7 +77,7 @@ The hooks can be run for all or individual images.
 The following curl command pulls all Docker images:
 `curl -i --header "X-Gitlab-Token: secret_token_1234" http://YOUR_IP:9000/hooks/pull-all-gitlab`
 
-Change webhook rules in `/var/www/webhooks/hooks.json`, or delete the firewall rule 
+Change webhook rules in `/var/www/webhooks/hooks.json`, or delete the firewall rule
 for port 9000 if webhooks are not needed using `ufw delete allow 9000`.
 
 Docker image updates can be performed using cron jobs. Uncomment and edit
