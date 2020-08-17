@@ -2,7 +2,7 @@
 
 > ShinyProxy 2.3.0
 
-https://marketplace.digitalocean.com/apps/shinyproxy
+[![](https://raw.githubusercontent.com/analythium/shinyproxy-1-click/master/digitalocean/images/do-btn-blue.svg)](https://marketplace.digitalocean.com/apps/shinyproxy)
 
 OS version: Ubuntu 18.04
 
