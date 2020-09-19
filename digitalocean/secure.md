@@ -21,7 +21,27 @@ Both of the following DNS records set up for your server:
 
 but in order for it to configure SSL for Nginx, we need to verify some of Nginx’s configuration.
 
+### Secure Nginx with Let's Encrypt
+
+Add repository for up to date Certbot version:
+
+```bash
+sudo add-apt-repository ppa:certbot/certbot
+```
+
+You’ll need to press ENTER to accept.
+
+Install Certbot’s Nginx package with apt:
+
+```bash
+sudo apt install python-certbot-nginx
+```
+
+Certbot is now ready to use.
+
+
 #### Nginx and firewall configuration
+
 
 In the `/etc/nginx/sites-available/default` file,
 find the line `server_name _;` and change it to
@@ -55,7 +75,10 @@ you control the domain you’re requesting a certificate for.
 
 `sudo certbot renew --dry-run`
 
+
 ## Enabling HTTPS for webhook
+
+Set up webhook first by following [this](webhook.md) tutorial.
 
 Add `-secure` flag to watch over https. This requires also passing the certificate:
 check name of certificate and private key in the dir `/etc/letsencrypt/live/example.com/`,
