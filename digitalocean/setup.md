@@ -30,8 +30,9 @@ You can create a build Droplet with any method, like the **control panel**, the 
 
 ### Create a droplet
 
-Use DigitalOcean control panel to create a Droplet based on the Ubuntu 18.04 (TLS) image
-(this is one of the supported operating systems for Marketplace images).
+Use DigitalOcean control panel to create a Droplet based on the 
+[one of the supported OS-es](https://github.com/digitalocean/marketplace-partners#supported-operating-systems)
+for Marketplace images.
 This image uses 1 CPU and 1GB RAM with 25GB SSD drive, this is a Standard US $5/mo image.
 For production purposes, 2 CPUs and 4GB RAM might be required.
 
@@ -42,7 +43,7 @@ data integrity issues. Building the image using the smallest disk size lets the
 users choose from the widest variety of Droplet plans.
 
 We do not enable unnecessary DigitalOcean features on your build Droplet, e.g.
-monitoring, IPv6, or private networking. Retaining more of the distribution's standard configuration means less cleanup before you creating the final image.
+monitoring, IPv6, or private networking. Retaining more of the distribution's standard configuration means less cleanup before creating the final image.
 
 ### Install required software packages
 
@@ -62,13 +63,15 @@ Some of your image setup may require information that you can't get automaticall
 
 ### Install application
 
+Using Ubuntu 20.04 (LTS)
+
 Software included:
 
-- OpenJDK 11.0.7 (GPL 2 with the Classpath Exception)
-- Docker CE 19.03.6 (Apache 2)
-- Docker Compose 1.17.1 (Apache 2)
-- ShinyProxy 2.3.0 (Apache 2)
-- Nginx 1.14.0 (2-clause BSD)
+- OpenJDK 11.0.8 (GPL 2 with the Classpath Exception)
+- Docker CE 19.03.8 (Apache 2)
+- Docker Compose 1.25.0 (Apache 2)
+- ShinyProxy 2.3.1 (Apache 2)
+- Nginx 1.18.0 (2-clause BSD)
 
 #### Install Java
 
@@ -85,9 +88,9 @@ sudo apt-get install default-jdk
 `java -version` should return something like:
 
 ```bash
-openjdk version "11.0.7" 2020-04-14
-OpenJDK Runtime Environment (build 11.0.7+10-post-Ubuntu-2ubuntu218.04)
-OpenJDK 64-Bit Server VM (build 11.0.7+10-post-Ubuntu-2ubuntu218.04, mixed mode, sharing)
+openjdk version "11.0.8" 2020-07-14
+OpenJDK Runtime Environment (build 11.0.8+10-post-Ubuntu-0ubuntu120.04)
+OpenJDK 64-Bit Server VM (build 11.0.8+10-post-Ubuntu-0ubuntu120.04, mixed mode, sharing)
 ```
 
 #### Install Docker CE and Docker Compose
@@ -132,9 +135,9 @@ The `sudo systemctl enable docker` enables Docker service start when the system 
 #### Install ShinyProxy
 
 ```bash
-sudo wget https://www.shinyproxy.io/downloads/shinyproxy_2.3.0_amd64.deb
-sudo apt install ./shinyproxy_2.3.0_amd64.deb
-sudo rm shinyproxy_2.3.0_amd64.deb
+sudo wget https://www.shinyproxy.io/downloads/shinyproxy_2.3.1_amd64.deb
+sudo apt install ./shinyproxy_2.3.1_amd64.deb
+sudo rm shinyproxy_2.3.1_amd64.deb
 ```
 
 Pull demo Docker images:
@@ -266,9 +269,9 @@ cat <<EOF
 
 Welcome to Analythium's 1-Click ShinyProxy Droplet.
 To keep this Droplet secure, the UFW firewall is enabled.
-Only these ports are open: 22 (SSH), 80 (HTTP), 443 (HTTPS), 9000 (webhook).
+Only these ports are open: 22 (SSH), 80 (HTTP).
 
-   * help and more information https://hub.analythium.io/docs/
+   * help and more information https://hub.analythium.io/
    * ShinyProxy documentation  https://www.shinyproxy.io/
 
 ********************************************************************************
@@ -286,7 +289,7 @@ sudo chmod +x /etc/update-motd.d/99-image-readme
 
 UFW is an Uncomplicated Firewall.
 We enables the UFW firewall to allow only SSH, HTTP and HTTPS.
-See a detailed tutorial [here](https://www.digitalocean.com/community/tutorials/how-to-set-up-a-firewall-with-ufw-on-ubuntu-18-04).
+See a detailed tutorial [here](https://www.digitalocean.com/community/tutorials/how-to-set-up-a-firewall-with-ufw-on-ubuntu-20-04).
 
 ```bash
 sudo apt install ufw
@@ -296,13 +299,23 @@ sudo ufw default allow outgoing
 
 sudo ufw allow ssh
 sudo ufw allow http
-sudo ufw allow https
-sudo ufw allow 9000
 ```
 
 Finally, enable these rules by running
 `sudo ufw enable`. This also disables the previously used 8080 port.
-Check `ufw status`.
+Check `ufw status` to see:
+
+```bash
+Status: active
+
+To                         Action      From
+--                         ------      ----
+22/tcp                     ALLOW       Anywhere
+80/tcp                     ALLOW       Anywhere
+22/tcp (v6)                ALLOW       Anywhere (v6)
+80/tcp (v6)                ALLOW       Anywhere (v6)
+```
+
 
 ## Step 3: Clean up and validate
 

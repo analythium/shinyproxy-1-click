@@ -4,7 +4,7 @@
 
 [![](https://raw.githubusercontent.com/analythium/shinyproxy-1-click/master/digitalocean/images/do-btn-blue.svg)](https://marketplace.digitalocean.com/apps/shinyproxy)
 
-OS version: Ubuntu 18.04
+OS version: Ubuntu 20.04 (LTS)
 
 Category: Data Science
 
@@ -12,13 +12,11 @@ Minimum resource: 1 CPU, 1G RAM, 25G SSD
 
 ## Software Included
 
-- OpenJDK 11.0.7 (GPL 2 with the Classpath Exception)
-- Docker CE 19.03.6 (Apache 2)
-- Docker Compose 1.17.1 (Apache 2)
-- ShinyProxy 2.3.0 (Apache 2)
-- Nginx 1.14.0 (2-clause BSD)
-- Certbot 0.31.0 (Apache 2)
-- Webhook 2.7.0 (MIT)
+- OpenJDK 11.0.8 (GPL 2 with the Classpath Exception)
+- Docker CE 19.03.8 (Apache 2)
+- Docker Compose 1.25.0 (Apache 2)
+- ShinyProxy 2.3.1 (Apache 2)
+- Nginx 1.18.0 (2-clause BSD)
 
 ## Application summary
 
@@ -64,24 +62,11 @@ Then restart ShinyProxy to take effect using `sudo service shinyproxy restart`.
 
 ### Advanced configuration
 
-Follow the [1-Click App documentation](https://github.com/analythium/shinyproxy-1-click/blob/master/digitalocean/secure.md)
-to set up SSL certificate to serve the Shiny apps over HTTPS.
-
-Continuous integration and continuous delivery (CI/CD) can be added via webhooks.
-A daemon process listens on port 9000 for GET and POST requests.
-The [1-Click App documentation](https://github.com/analythium/shinyproxy-1-click/blob/master/digitalocean/secure.md) explains
-how to set up CI/CD with GitLab pipelines and container registry,
-or with a combination of GitHub and Docker Hub (public or private repositories).
-The hooks can be run for all or individual images.
-
-The following curl command pulls all Docker images:
-`curl -i --header "X-Gitlab-Token: secret_token_1234" http://YOUR_IP:9000/hooks/pull-all-gitlab`
-
-Change webhook rules in `/var/www/webhooks/hooks.json`, or delete the firewall rule
-for port 9000 if webhooks are not needed using `ufw delete allow 9000`.
-
-Docker image updates can be performed using cron jobs. Uncomment and edit
-some predefined jobs using `crontab -e`.
+Follow the 1-Click App documentation
+to set up SSL certificate to serve the Shiny apps over 
+[HTTPS](https://github.com/analythium/shinyproxy-1-click/blob/master/digitalocean/secure.md)
+and to configure continuous integration and continuous delivery (CI/CD) 
+via [webhook](https://github.com/analythium/shinyproxy-1-click/blob/master/digitalocean/webhook.md).
 
 ## Support
 

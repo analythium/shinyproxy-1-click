@@ -4,6 +4,28 @@
 
 [![](https://raw.githubusercontent.com/analythium/shinyproxy-1-click/master/digitalocean/images/do-btn-blue.svg)](https://marketplace.digitalocean.com/apps/shinyproxy)
 
+## Open up https port
+
+UFW is an Uncomplicated Firewall.
+We enables the UFW firewall to allow only SSH, HTTP and HTTPS.
+See a detailed tutorial [here](https://www.digitalocean.com/community/tutorials/how-to-set-up-a-firewall-with-ufw-on-ubuntu-20-04).
+
+```bash
+sudo apt install ufw
+
+#sudo ufw default deny incoming
+#sudo ufw default allow outgoing
+
+#sudo ufw allow ssh
+#sudo ufw allow http
+sudo ufw allow https
+#sudo ufw allow 9000
+```
+
+Finally, enable these rules by running `sudo ufw enable`. 
+Check `ufw status`.
+
+
 ## Let's Encript certificate setup
 
 Based on [this](https://www.digitalocean.com/community/tutorials/how-to-secure-nginx-with-let-s-encrypt-on-ubuntu-18-04)

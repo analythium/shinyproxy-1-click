@@ -4,6 +4,28 @@
 
 [![](https://raw.githubusercontent.com/analythium/shinyproxy-1-click/master/digitalocean/images/do-btn-blue.svg)](https://marketplace.digitalocean.com/apps/shinyproxy)
 
+## Open port for webhook
+
+UFW is an Uncomplicated Firewall.
+We enables the UFW firewall to allow only SSH, HTTP and HTTPS.
+See a detailed tutorial [here](https://www.digitalocean.com/community/tutorials/how-to-set-up-a-firewall-with-ufw-on-ubuntu-20-04).
+
+```bash
+sudo apt install ufw
+
+#sudo ufw default deny incoming
+#sudo ufw default allow outgoing
+
+#sudo ufw allow ssh
+#sudo ufw allow http
+#sudo ufw allow https
+sudo ufw allow 9000
+```
+
+Finally, enable these rules by running `sudo ufw enable`. 
+Check `ufw status`.
+
+
 ## Install webhook
 
 We are going to use [webhook](https://github.com/adnanh/webhook).
