@@ -2,7 +2,7 @@
 
 > ShinyProxy 2.3.1 - in development and not yet published
 
-[![](https://raw.githubusercontent.com/analythium/shinyproxy-1-click/master/digitalocean/images/do-btn-blue.svg)](https://marketplace.digitalocean.com/apps/shinyproxy)
+[![DO button](https://raw.githubusercontent.com/analythium/shinyproxy-1-click/master/digitalocean/images/do-btn-blue.svg)](https://marketplace.digitalocean.com/apps/shinyproxy)
 
 OS version: Ubuntu 20.04 (LTS)
 
@@ -63,19 +63,19 @@ Then restart ShinyProxy to take effect using `sudo service shinyproxy restart`.
 ### Advanced configuration
 
 Follow the 1-Click App documentation
-to set up SSL certificate to serve the Shiny apps over 
+to set up SSL certificate to serve the Shiny apps over
 [HTTPS](https://github.com/analythium/shinyproxy-1-click/blob/master/digitalocean/secure.md)
-and to configure continuous integration and continuous delivery (CI/CD) 
+and to configure continuous integration and continuous delivery (CI/CD)
 via [webhook](https://github.com/analythium/shinyproxy-1-click/blob/master/digitalocean/webhook.md).
 
 ## Support
 
-https://github.com/analythium/shinyproxy-1-click/issues
+[https://github.com/analythium/shinyproxy-1-click/issues](https://github.com/analythium/shinyproxy-1-click/issues)
 
 ## Additional links
 
-Analythium Hub: https://hub.analythium.io/docs/ Detailed 1-Click App Documentation
+Analythium Hub: [https://hub.analythium.io/docs/](https://hub.analythium.io/docs/) Detailed 1-Click App Documentation
 
-ShinyProxy website: https://shinyproxy.io/ ShinyProxy configuration
+ShinyProxy website: [https://shinyproxy.io/](https://shinyproxy.io/) ShinyProxy configuration
 
-ShinyProxy forum: https://support.openanalytics.eu/ Q&A website under the ShinyProxy category
+ShinyProxy forum: [https://support.openanalytics.eu/](https://support.openanalytics.eu/) Q&A website under the ShinyProxy category

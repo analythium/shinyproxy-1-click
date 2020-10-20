@@ -2,7 +2,7 @@
 
 > This document guides you through TLS setup for ShinyProxy 1-click app
 
-[![](https://raw.githubusercontent.com/analythium/shinyproxy-1-click/master/digitalocean/images/do-btn-blue.svg)](https://marketplace.digitalocean.com/apps/shinyproxy)
+[![DO button](https://raw.githubusercontent.com/analythium/shinyproxy-1-click/master/digitalocean/images/do-btn-blue.svg)](https://marketplace.digitalocean.com/apps/shinyproxy)
 
 ## Open up https port
 
@@ -22,9 +22,8 @@ sudo ufw allow https
 #sudo ufw allow 9000
 ```
 
-Finally, enable these rules by running `sudo ufw enable`. 
+Finally, enable these rules by running `sudo ufw enable`.
 Check `ufw status`.
-
 
 ## Let's Encript certificate setup
 
@@ -61,9 +60,7 @@ sudo apt install python-certbot-nginx
 
 Certbot is now ready to use.
 
-
 #### Nginx and firewall configuration
-
 
 In the `/etc/nginx/sites-available/default` file,
 find the line `server_name _;` and change it to
@@ -76,7 +73,7 @@ If there aren't any problems, restart Nginx to enable your changes by
 `sudo systemctl restart nginx`.
 
 There is no need to firewall off port 80, instead pick forwarding when asked by cetbot (option 2).
-See https://letsencrypt.org/docs/allow-port-80/ for explanation.
+See [https://letsencrypt.org/docs/allow-port-80/](https://letsencrypt.org/docs/allow-port-80/) for explanation.
 
 #### Obtaining an SSL Certificate
 
@@ -97,7 +94,6 @@ you control the domain you’re requesting a certificate for.
 
 `sudo certbot renew --dry-run`
 
-
 ## Enabling HTTPS for webhook
 
 Set up webhook first by following [this](webhook.md) tutorial.
@@ -116,10 +112,9 @@ because it is not updating when the TLS certificate is renewed.
 
 Test it in `-verbose` mode: change example.com to your domain.
 Have to open up another port, here 9001, because 9000 is taken by the daemon:
-`/var/www/webhooks/webhook -hooks /var/www/webhooks/hooks.json -hotreload -verbose -secure -cert /etc/letsencrypt/live/test.side-r.com/fullchain.pem -key /etc/letsencrypt/live/test.side-r.com/privkey.pem -port 9001 `
+`/var/www/webhooks/webhook -hooks /var/www/webhooks/hooks.json -hotreload -verbose -secure -cert /etc/letsencrypt/live/test.side-r.com/fullchain.pem -key /etc/letsencrypt/live/test.side-r.com/privkey.pem -port 9001`
 
-See more parameter settings here:
-https://github.com/adnanh/webhook/blob/master/docs/Webhook-Parameters.md
+See more parameter settings [here](https://github.com/adnanh/webhook/blob/master/docs/Webhook-Parameters.md).
 
 Note: we are testing over port 9001, but the real webhook is listening on port 9000.
 
@@ -173,5 +168,4 @@ image name and the tag.
 }
 ```
 
-Set webhook url as https://YOUR_IP_OR_DOMAIN:9000/hooks/pull-one-dockerhub
-
+Set webhook url as `https://YOUR_IP_OR_DOMAIN:9000/hooks/pull-one-dockerhub`.

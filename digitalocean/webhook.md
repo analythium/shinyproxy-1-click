@@ -2,7 +2,7 @@
 
 > This document guides you through TLS setup for ShinyProxy 1-click app
 
-[![](https://raw.githubusercontent.com/analythium/shinyproxy-1-click/master/digitalocean/images/do-btn-blue.svg)](https://marketplace.digitalocean.com/apps/shinyproxy)
+[![DO button](https://raw.githubusercontent.com/analythium/shinyproxy-1-click/master/digitalocean/images/do-btn-blue.svg)](https://marketplace.digitalocean.com/apps/shinyproxy)
 
 ## Open port for webhook
 
@@ -24,7 +24,6 @@ sudo ufw allow 9000
 
 Finally, enable these rules by running `sudo ufw enable`. 
 Check `ufw status`.
-
 
 ## Install webhook
 
@@ -54,6 +53,7 @@ sudo touch /var/www/webhooks/hooks.json
 ```
 
 The following array of hook definitions goes inside (`vim /var/www/webhooks/hooks.json`):
+
 ```json
 [
   {
@@ -139,7 +139,7 @@ This array contains 3 hooks. The 1st and the second is
 set up to work with GitLab CICD pipelines.
 See corresponding `.gitlab-ci.yml` file [here](https://gitlab.com/analythium/shinyproxy-hello/-/blob/master/.gitlab-ci.yml).
 
-These need a secret header (value `"secret_token_1234"`) 
+These need a secret header (value `"secret_token_1234"`)
 that is used in the hook definition and in the webhook request. Change to some random
 high entropy value.
 
@@ -274,8 +274,8 @@ We add a couple of lines to cron. All commented out but there if needed.
 We need to restart the webhook daemon regularly
 because it is not updating when the TLS certificate is renewed.
 
-We have access to the cron utility: run `crontab -e`, 
-pick an editor (nano) if you haven’t done so already and then add 
+We have access to the cron utility: run `crontab -e`,
+pick an editor (nano) if you haven’t done so already and then add
 these lines to the bottom and save it:
 
 ```bash
@@ -292,4 +292,3 @@ these lines to the bottom and save it:
 Check `crontab -l`
 
 See [this](https://www.digitalocean.com/community/tutorials/how-to-use-cron-to-automate-tasks-ubuntu-1804) guide for cron settings.
-

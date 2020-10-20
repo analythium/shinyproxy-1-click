@@ -2,7 +2,7 @@
 
 > ShinyProxy 2.3.0
 
-[![](https://raw.githubusercontent.com/analythium/shinyproxy-1-click/master/digitalocean/images/do-btn-blue.svg)](https://marketplace.digitalocean.com/apps/shinyproxy)
+[![DO button](https://raw.githubusercontent.com/analythium/shinyproxy-1-click/master/digitalocean/images/do-btn-blue.svg)](https://marketplace.digitalocean.com/apps/shinyproxy)
 
 OS version: Ubuntu 18.04
 
@@ -39,16 +39,16 @@ Once your new droplet with the ShinyProxy 1-Click app is up and running, you can
 
 ### Log in through SSH
 
-Use your SSH key you set up with your droplet to log in. Edit `/etc/shinyproxy/application.yml` to [configure](<https://shinyproxy.io/configuration/>) your instance. Pay special attention to authentication: it is set to `simple`. You should change user names and passwords, possibly the authentication type.<br>
+Use your SSH key you set up with your droplet to log in. Edit `/etc/shinyproxy/application.yml` to [configure](<https://shinyproxy.io/configuration/>) your instance. Pay special attention to authentication: it is set to `simple`. You should change user names and passwords, possibly the authentication type.
 
- Pull Docker images and add those to the configuration file to [deploy your Shiny apps](<https://shinyproxy.io/deploying-apps/>).<br>
+Pull Docker images and add those to the configuration file to [deploy your Shiny apps](<https://shinyproxy.io/deploying-apps/>).
 
- Then restart ShinyProxy to take effect using `sudo service shinyproxy restart`.
+Then restart ShinyProxy to take effect using `sudo service shinyproxy restart`.
 
 ## Support
 
-https://github.com/analythium/shinyproxy-1-click/issues
+[https://github.com/analythium/shinyproxy-1-click/issues](https://github.com/analythium/shinyproxy-1-click/issues)
 
 ## Additional links
 
-ShinyProxy forum: https://support.openanalytics.eu/ Q&A website under the ShinyProxy category
+ShinyProxy forum: [https://support.openanalytics.eu/](https://support.openanalytics.eu/) Q&A website under the ShinyProxy category.

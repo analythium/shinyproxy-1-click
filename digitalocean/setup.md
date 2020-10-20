@@ -2,7 +2,7 @@
 
 > This document guides you through the 1-click setup process for ShinyProxy
 
-[![](https://raw.githubusercontent.com/analythium/shinyproxy-1-click/master/digitalocean/images/do-btn-blue.svg)](https://marketplace.digitalocean.com/apps/shinyproxy)
+[![DO button](https://raw.githubusercontent.com/analythium/shinyproxy-1-click/master/digitalocean/images/do-btn-blue.svg)](https://marketplace.digitalocean.com/apps/shinyproxy)
 
 Using the DigitalOcean Marketplace, we can deliver a truly seamless experience for users,
 creating the ability for developers to deploy fully-tested app environments with the click of a button.
@@ -10,7 +10,7 @@ creating the ability for developers to deploy fully-tested app environments with
 ## Step 1: Become a vendor on the DigitalOcean Marketplace
 
 Click on 'Become a Vendor' button on the [DigitalOcean Marketplace](https://marketplace.digitalocean.com/vendors) page: fill in the form.
-Then you'll be redirected to [this](- https://marketplace.digitalocean.com/vendors/getting-started-as-a-digitalocean-marketplace-vendor
+Then you'll be redirected to [this](https://marketplace.digitalocean.com/vendors/getting-started-as-a-digitalocean-marketplace-vendor
 ) page and receive a follow up email.
 
 Vendors can list **1-Click Apps** that run on DigitalOcean Droplets.
@@ -30,7 +30,7 @@ You can create a build Droplet with any method, like the **control panel**, the 
 
 ### Create a droplet
 
-Use DigitalOcean control panel to create a Droplet based on the 
+Use DigitalOcean control panel to create a Droplet based on the
 [one of the supported OS-es](https://github.com/digitalocean/marketplace-partners#supported-operating-systems)
 for Marketplace images.
 This image uses 1 CPU and 1GB RAM with 25GB SSD drive, this is a Standard US $5/mo image.
@@ -229,6 +229,7 @@ sudo vim /etc/nginx/sites-enabled/default
 ```
 
 Find the `location / {` line and add the following:
+
 ```bash
 location / {
     proxy_pass          http://127.0.0.1:8080/;
@@ -315,7 +316,6 @@ To                         Action      From
 22/tcp (v6)                ALLOW       Anywhere (v6)
 80/tcp (v6)                ALLOW       Anywhere (v6)
 ```
-
 
 ## Step 3: Clean up and validate
 
