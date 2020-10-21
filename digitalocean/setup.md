@@ -216,6 +216,7 @@ then restart ShinyProxy to take effect using `sudo service shinyproxy restart`.
 
 Besides adding apps and permission, edits were made to increase file size limit
 and the default `heartbeat-timeout: 60000` (1 minute in milliseconds) to `600000` (10 mins), etc.
+Now `cd ~` back to the home (`/root`) folder to continue.
 
 ### Removing port 8080 and using port 80
 
@@ -336,7 +337,7 @@ bash img_check.sh
 
 To clear up log files, use `truncate -s 0 /var/log/*log`.
 
-Finally, clean up these script files as `rm *.sh`.
+Finally, clean up these script files as `rm *.sh`, `truncate -s 0 /var/log/*log` and power down (`shutdown -h now`).
 
 ## Step 4: Take a snapshot
 
