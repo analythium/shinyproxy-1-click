@@ -1,6 +1,6 @@
 # DigitalOcean Marketplace submission
 
-> ShinyProxy 2.3.0
+> ShinyProxy 2.3.0 - published 2020-05-02
 
 [![DO button](https://raw.githubusercontent.com/analythium/shinyproxy-1-click/master/digitalocean/images/do-btn-blue.svg)](https://marketplace.digitalocean.com/apps/shinyproxy)
 
