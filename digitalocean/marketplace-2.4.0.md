@@ -1,6 +1,6 @@
 # DigitalOcean Marketplace submission
 
-> ShinyProxy 2.3.1 - in development and not yet published
+> ShinyProxy 2.4.0 - published xxxx-xx-xx
 
 [![DO button](https://raw.githubusercontent.com/analythium/shinyproxy-1-click/master/digitalocean/images/do-btn-blue.svg)](https://marketplace.digitalocean.com/apps/shinyproxy)
 
@@ -15,7 +15,7 @@ Minimum resource: 1 CPU, 1G RAM, 25G SSD
 - OpenJDK 11.0.8 (GPL 2 with the Classpath Exception)
 - Docker CE 19.03.8 (Apache 2)
 - Docker Compose 1.25.0 (Apache 2)
-- ShinyProxy 2.3.1 (Apache 2)
+- ShinyProxy 2.4.0 (Apache 2)
 - Nginx 1.18.0 (2-clause BSD)
 
 ## Application summary
