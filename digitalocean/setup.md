@@ -102,25 +102,26 @@ sudo apt-get install docker-compose
 
 Check to see if Docker is running `sudo service docker status`.
 
-Edit system startup options to enable Docker automatically:
+ShinyProxy needs to connect to the docker daemon to spin up the containers for the apps.
+By default ShinyProxy will do so on port 2375 of the docker host.
+In order to allow for connections on port 2375, the startup options need to be edited
+following the ShinyProxy [guide](https://www.shinyproxy.io/getting-started/#docker-startup-options).
+
+On an Ubuntu 16.04 LTS or higher that uses systemd,
+one can create a file `/etc/systemd/system/docker.service.d/override.conf`:
 
 ```bash
-sudo vim /lib/systemd/system/docker.service
+mkdir /etc/systemd/system/docker.service.d
+touch /etc/systemd/system/docker.service.d/override.conf
 ```
 
-Replace:
+Add the following content:
 
-```vim
-ExecStart=/usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock
+```bash
+[Service]
+ExecStart=
+ExecStart=/usr/bin/dockerd -H unix:// -D -H tcp://127.0.0.1:2375
 ```
-
-with:
-
-```vim
-ExecStart=/usr/bin/dockerd -H fd:// -D -H tcp://127.0.0.1:2375
-```
-
-save and exit using `:wq!`
 
 Reload the system daemon and restart docker:
 
@@ -135,9 +136,9 @@ The `sudo systemctl enable docker` enables Docker service start when the system 
 #### Install ShinyProxy
 
 ```bash
-sudo wget https://www.shinyproxy.io/downloads/shinyproxy_2.3.1_amd64.deb
-sudo apt install ./shinyproxy_2.3.1_amd64.deb
-sudo rm shinyproxy_2.3.1_amd64.deb
+sudo wget https://www.shinyproxy.io/downloads/shinyproxy_2.4.0_amd64.deb
+sudo apt install ./shinyproxy_2.4.0_amd64.deb
+sudo rm shinyproxy_2.4.0_amd64.deb
 ```
 
 Pull demo Docker images:
