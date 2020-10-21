@@ -26,7 +26,9 @@ DigitalOcean if you don't yet have an account.
 
 ## Versions
 
-[ShinyProxy 2.3.0](marketplace-2.3.0.md)
+- [ShinyProxy 2.4.0](marketplace-2.4.0.md)
+- [ShinyProxy 2.3.1](marketplace-2.3.1.md)
+- [ShinyProxy 2.3.0](marketplace-2.3.0.md)
 
 ## Issues
 
