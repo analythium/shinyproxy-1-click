@@ -70,7 +70,7 @@ Software included:
 - OpenJDK 11.0.8 (GPL 2 with the Classpath Exception)
 - Docker CE 19.03.8 (Apache 2)
 - Docker Compose 1.25.0 (Apache 2)
-- ShinyProxy 2.3.1 (Apache 2)
+- ShinyProxy 2.4.0 (Apache 2)
 - Nginx 1.18.0 (2-clause BSD)
 
 #### Install Java
@@ -81,6 +81,7 @@ use your SSH key and IP address.
 
 ```bash
 sudo apt-get update
+sudo apt-get upgrade
 sudo apt-get install default-jre
 sudo apt-get install default-jdk
 ```
@@ -101,6 +102,7 @@ sudo apt-get install docker-compose
 ```
 
 Check to see if Docker is running `sudo service docker status`.
+`docker --version` and `docker-compose --version` will return version in use.
 
 ShinyProxy needs to connect to the docker daemon to spin up the containers for the apps.
 By default ShinyProxy will do so on port 2375 of the docker host.
@@ -252,6 +254,7 @@ Add `client_max_body_size 200M;` to the `server {` block if handling large files
 
 Restart nginx with `sudo service nginx restart` and you can access the site at `http://YOUR_IP/`
 
+`nginx -v` will print out Nginx version.
 
 ### Add a message of the day
 
@@ -333,7 +336,7 @@ bash img_check.sh
 
 To clear up log files, use `truncate -s 0 /var/log/*log`.
 
-Finally, clean up these files as `rm *.sh`.
+Finally, clean up these script files as `rm *.sh`.
 
 ## Step 4: Take a snapshot
 
@@ -353,4 +356,6 @@ Submit your final image to the Marketplace team for review.
 
 Secure the ShinyProxy server following [this](secure.md) tutorial.
 
-Add webhook to ShinyProxy server following [this](webhook.md) tutorial.
+[Updating](update.md) ShinyProxy configuration (i.e. changing defaults and adding docker images).
+
+Add webhook to ShinyProxy server for CI/CD following [this](webhook.md) tutorial.
