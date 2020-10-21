@@ -18,6 +18,10 @@ Minimum resource: 1 CPU, 1G RAM, 25G SSD
 - ShinyProxy 2.3.1 (Apache 2)
 - Nginx 1.18.0 (2-clause BSD)
 
+## Change log
+
+- Updated ShinyProxy to version 2.3.1.
+
 ## Application summary
 
 ShinyProxy is an open source platform to deploy R Shiny applications at scale in companies and

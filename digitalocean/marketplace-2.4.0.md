@@ -18,6 +18,11 @@ Minimum resource: 1 CPU, 1G RAM, 25G SSD
 - ShinyProxy 2.4.0 (Apache 2)
 - Nginx 1.18.0 (2-clause BSD)
 
+## Change log
+
+- Updated ShinyProxy to version 2.4.0.
+- Updated Docker startup options so settings will not be lost upon updating Docker.
+
 ## Application summary
 
 ShinyProxy is an open source platform to deploy R Shiny applications at scale in companies and
