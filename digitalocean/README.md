@@ -24,6 +24,16 @@ in fully-tested app environments.
 You can use this [referral link](https://m.do.co/c/a8041699739d) to sign up to
 DigitalOcean if you don't yet have an account.
 
+## Configuration
+
+The [setup](setup.md) file explains the configuration done for the marketplace image.
+
+[Secure](secure.md) the ShinyProxy server using HTTPS.
+
+[Updating](update.md) ShinyProxy configuration (i.e. changing defaults and adding docker images).
+
+Add [webhook](webhook.md) to for CI/CD.
+
 ## Versions
 
 - [ShinyProxy 2.4.0](marketplace-2.4.0.md)

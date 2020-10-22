@@ -117,7 +117,7 @@ mkdir /etc/systemd/system/docker.service.d
 touch /etc/systemd/system/docker.service.d/override.conf
 ```
 
-Add the following content:
+Add the following content (`vim /etc/systemd/system/docker.service.d/override.conf`):
 
 ```bash
 [Service]
@@ -331,11 +331,19 @@ The scripts will check for and fix potential security concerns and verify that t
 ```bash
 wget https://raw.githubusercontent.com/digitalocean/marketplace-partners/master/scripts/cleanup.sh
 wget https://raw.githubusercontent.com/digitalocean/marketplace-partners/master/scripts/img_check.sh
+
 bash cleanup.sh
 bash img_check.sh
+
+
+truncate -s 0 /var/log/*log
+bash img_check.sh
+rm *.sh
+history -c
+shutdown -h now
 ```
 
-To clear up log files, use `truncate -s 0 /var/log/*log`.
+To clear up log files, use `truncate -s 0 /var/log/*log`. Clear bash history: `history -c`.
 
 Finally, clean up these script files as `rm *.sh`, `truncate -s 0 /var/log/*log` and power down (`shutdown -h now`).
 

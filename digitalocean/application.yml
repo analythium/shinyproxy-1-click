@@ -36,13 +36,14 @@ proxy:
     container-image: analythium/shinyproxy-demo:latest
     logo-url: https://github.com/analythium/shinyproxy-1-click/raw/master/digitalocean/images/app-dots.png
     access-groups: [admins]
-  - id: python-dash-demo
-    display-name: Python Dash Demo Application
-    description: Dash app with multiple inputs
+  - id: dash-demo
+    display-name: Dash Demo Application
+    description: Explore life expectancy and GDP by countries
     port: 8050
     container-cmd: ["python", "app.py"]
-    container-image: analythium/shinyproxy-python-dash
+    container-image: openanalytics/shinyproxy-dash-demo:latest
     logo-url: https://github.com/analythium/shinyproxy-1-click/raw/master/digitalocean/images/app-dash-py.png
+    access-groups: [admins, users]
 
 logging:
   file:
