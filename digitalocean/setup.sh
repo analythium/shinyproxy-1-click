@@ -39,4 +39,5 @@ echo ">>> Restarting ShinyProxy"
 sudo service shinyproxy restart
 rm ./update.sh
 echo ">>> Done"
+rm /root/.bash_history
 EOF
