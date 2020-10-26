@@ -12,18 +12,17 @@ Create and `application.yml` file or use the file in this directory as a startin
 
 This step is optional if private registry access is needed for pulling Docker images.
 
-Log into your droplet via ssh and add access token (for GitLab) or password (for Docker Hub) 
-into a file `token.txt`: `echo your_token > ./token.txt`.
-The access token / password will passed via stdin.
+Log into your droplet via ssh and lig into your registry via `docker login`
+(Docker Hub by default, use `docker login registry.gitlab.com` for the GitLab 
+container registry). You will be asked to authenticate interactively
+and your access token (not password) will be saved on the droplet.
 
 Uncomment lines as needed for registry login:
 
 ```bash
 echo ">>> Logging into registry"
-cat ./token.txt | docker login --username username --password-stdin registry.gitlab.com
+docker login registry.gitlab.com
 ```
-
-Change `--username username` to your registry login username.
 
 ## Usage
 
@@ -35,7 +34,7 @@ The following command line arguments need to be passed to the `setup.sh` script:
 
 - `-i`: your ssh key,
 - `-s`: user name (root for DigitalOcean droplets) and the IP address: `user@ip_address`,
-- `-f`: path and file name to the yml with the ShinyProxy config, e.g. `/path/to/application.yml`.
+- `-f`: path and file name to the yml with the ShinyProxy config, e.g. `/path/to/application-new.yml`.
 
 ## What the script does
 
