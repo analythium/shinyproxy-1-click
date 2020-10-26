@@ -55,7 +55,7 @@ You’ll need to press ENTER to accept.
 Install Certbot’s Nginx package with apt:
 
 ```bash
-sudo apt install python-certbot-nginx
+sudo apt install python3-certbot-nginx
 ```
 
 Certbot is now ready to use.
