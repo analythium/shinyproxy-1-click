@@ -1,5 +1,7 @@
 # Securing DigitalOcean 1-Click app for ShinyProxy
 
+**For the complete guide, see [hub.analythium.io/docs/](https://hub.analythium.io/docs/)**
+
 > This document guides you through TLS setup for ShinyProxy 1-click app
 
 [![DO button](https://raw.githubusercontent.com/analythium/shinyproxy-1-click/master/digitalocean/images/do-btn-blue.svg)](https://marketplace.digitalocean.com/apps/shinyproxy)
