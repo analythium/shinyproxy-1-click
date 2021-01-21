@@ -4,7 +4,7 @@
 > ShinyProxy builds on enterprise Java and Docker technology to provide authentication,
 > authorization, resource allocation, and monitoring.
 
-[![DO button](https://raw.githubusercontent.com/analythium/shinyproxy-1-click/master/digitalocean/images/do-btn-blue.svg)](https://marketplace.digitalocean.com/apps/shinyproxy)
+[![DO button](https://raw.githubusercontent.com/analythium/shinyproxy-1-click/master/digitalocean/images/do-btn-blue.svg)](https://marketplace.digitalocean.com/apps/shinyproxy?refcode=a8041699739d)
 
 ## Summary
 
