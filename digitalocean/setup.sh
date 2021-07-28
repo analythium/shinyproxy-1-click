@@ -10,7 +10,6 @@
 
 # Registry login (do it only once)
 #
-# Uncomment lines as needed for registry login.
 # Log in to droplet via ssh and add access token into a file:
 # `echo your_token > ./token.txt`
 # this will be used to pass token via stdin:
