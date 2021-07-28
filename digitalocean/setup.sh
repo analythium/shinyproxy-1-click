@@ -8,7 +8,7 @@
 # -s: user@ip_address
 # -f: /path/to/application.yml file
 
-# Registry login
+# Registry login (do it only once)
 #
 # Uncomment lines as needed for registry login.
 # Log in to droplet via ssh and add access token into a file:
@@ -16,7 +16,6 @@
 # this will be used to pass token via stdin:
 # `cat ./token.txt | docker login --username username --password-stdin registryname`
 # Change `--username username` to your username and `registryname` to the registry.
-
 
 while getopts i:s:f: flag
 do
@@ -29,10 +28,7 @@ done
 
 echo "[INFO] Copying $file to droplet"
 scp -i $key $file $server:/etc/shinyproxy/application.yml
-
 ssh -i $key $server /bin/bash << EOF
-#echo "[INFO] Logging into registry"
-#cat ./token.txt | docker login --username username --password-stdin registry.gitlab.com
 echo "[INFO] Updating docker images according to application.yaml"
 wget -O ./update.sh https://raw.githubusercontent.com/analythium/shinyproxy-1-click/master/digitalocean/update.sh
 bash ./update.sh /etc/shinyproxy/application.yml
