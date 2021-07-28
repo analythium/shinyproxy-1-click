@@ -33,8 +33,8 @@ wget -O ./update.sh https://raw.githubusercontent.com/analythium/shinyproxy-1-cl
 bash ./update.sh /etc/shinyproxy/application.yml
 echo "[INFO] Restarting ShinyProxy"
 sudo service shinyproxy restart
-echo "[INFO] Restarting Docker Engine"
-sudo service docker restart
+#echo "[INFO] Restarting Docker Engine"
+#sudo service docker restart
 rm ./update.sh
 echo "[INFO] Done"
 EOF
