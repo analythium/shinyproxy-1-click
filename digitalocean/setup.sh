@@ -26,19 +26,19 @@ do
     esac
 done
 
-echo ">>> Copying $file to droplet"
+echo "[INFO] Copying $file to droplet"
 scp -i $key $file $server:/etc/shinyproxy/application.yml
 
 ssh -i $key $server /bin/bash << EOF
-#echo ">>> Logging into registry"
+#echo "[INFO] Logging into registry"
 #cat ./token.txt | docker login --username username --password-stdin registry.gitlab.com
-echo ">>> Updating docker images according to application.yaml"
+echo "[INFO] Updating docker images according to application.yaml"
 wget -O ./update.sh https://raw.githubusercontent.com/analythium/shinyproxy-1-click/master/digitalocean/update.sh
 bash ./update.sh /etc/shinyproxy/application.yml
-echo ">>> Restarting ShinyProxy"
+echo "[INFO] Restarting ShinyProxy"
 sudo service shinyproxy restart
-echo ">>> Restarting Docker Engine"
+echo "[INFO] Restarting Docker Engine"
 sudo service docker restart
 rm ./update.sh
-echo ">>> Done"
+echo "[INFO] Done"
 EOF
