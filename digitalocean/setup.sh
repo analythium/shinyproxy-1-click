@@ -10,7 +10,7 @@
 
 # Registry login (do it only once)
 #
-# Log in to droplet via ssh and add access token into a file:
+# Log in to host via ssh and add access token into a file:
 # `echo your_token > ./token.txt`
 # this will be used to pass token via stdin:
 # `cat ./token.txt | docker login --username username --password-stdin registryname`
@@ -25,7 +25,7 @@ do
     esac
 done
 
-echo "[INFO] Copying $file to droplet"
+echo "[INFO] Copying $file to host"
 scp -q -i $key $file $server:/etc/shinyproxy/application.yml
 ssh -i $key $server /bin/bash << EOF
 echo "[INFO] Updating docker images according to application.yaml"
