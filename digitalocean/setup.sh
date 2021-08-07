@@ -26,10 +26,10 @@ do
 done
 
 echo "[INFO] Copying $file to droplet"
-scp -i $key $file $server:/etc/shinyproxy/application.yml
+scp -q -i $key $file $server:/etc/shinyproxy/application.yml
 ssh -i $key $server /bin/bash << EOF
 echo "[INFO] Updating docker images according to application.yaml"
-wget -O ./update.sh https://raw.githubusercontent.com/analythium/shinyproxy-1-click/master/digitalocean/update.sh
+curl -s https://raw.githubusercontent.com/analythium/shinyproxy-1-click/master/digitalocean/update.sh -o update.sh
 bash ./update.sh /etc/shinyproxy/application.yml
 echo "[INFO] Restarting ShinyProxy"
 sudo service shinyproxy restart
