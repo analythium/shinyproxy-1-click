@@ -7,7 +7,7 @@ export TERM=xterm-256color
 cat <<EOF
 ********************************************************************************
 
-Welcome to Analythium's 1-Click OpenCPU + RStudio Server Droplet.
+Welcome to Analythium's 1-Click ShinyProxy Droplet.
 To keep this Droplet secure, the UFW firewall is enabled.
 Only these ports are open: 22 (SSH), 80 (HTTP).
 
