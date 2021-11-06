@@ -9,8 +9,8 @@ systemctl enable docker
 docker pull registry.gitlab.com/analythium/shinyproxy-hello/hello:latest
 docker pull analythium/shinyproxy-demo:latest
 
-## Onstall ShinyProxy
-export VERSION="2.5.0"
+## Install ShinyProxy
+export VERSION="2.6.0"
 wget https://www.shinyproxy.io/downloads/shinyproxy_${VERSION}_amd64.deb
 apt install ./shinyproxy_${VERSION}_amd64.deb
 rm shinyproxy_${VERSION}_amd64.deb
