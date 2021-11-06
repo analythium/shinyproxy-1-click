@@ -73,7 +73,7 @@ function checkAgent {
      echo -en "\e[41m[FAIL]\e[0m DigitalOcean Monitoring Agent detected.\n"
             ((FAIL++))
             STATUS=2
-      if [[ $OS == "CentOS Linux" ]]; then
+      if [[ $OS == "CentOS Linux" ]] || [[ $OS == "CentOS Stream" ]] || [[ $OS == "Rocky Linux" ]]; then
         echo "The agent can be removed with 'sudo yum remove do-agent' "
       elif [[ $OS == "Ubuntu" ]]; then
         echo "The agent can be removed with 'sudo apt-get purge do-agent' "
@@ -345,7 +345,7 @@ function checkFirewall {
         FW_VER="\e[93m[WARN]\e[0m No firewall is configured. Ensure ${fw} is installed and configured\n"
         ((WARN++))
       fi
-    elif [[ $OS == "CentOS Linux" ]]; then
+    elif [[ $OS == "CentOS Linux" ]] || [[ $OS == "CentOS Stream" ]] || [[ $OS == "Rocky Linux" ]]; then
       if [ -f /usr/lib/systemd/system/csf.service ]; then
         fw="csf"
         if [[ $(systemctl status $fw >/dev/null 2>&1) ]]; then
@@ -442,7 +442,7 @@ function checkUpdates {
         else
             echo -en "\e[32m[PASS]\e[0m There are no pending security updates for this image.\n\n"
         fi
-    elif [[ $OS == "CentOS Linux" ]]; then
+    elif [[ $OS == "CentOS Linux" ]] || [[ $OS == "CentOS Stream" ]] || [[ $OS == "Rocky Linux" ]]; then
         echo -en "\nChecking for available security updates, this may take a minute...\n\n"
 
         update_count=$(yum check-update --security --quiet | wc -l)
@@ -472,83 +472,6 @@ function checkCloudInit {
         STATUS=2
     fi
     return 1
-}
-function checkMongoDB {
-  # Check if MongoDB is installed
-  # If it is, verify the version is allowed (non-SSPL)
-
-   if [[ $OS == "Ubuntu" ]] || [[ "$OS" =~ Debian.* ]]; then
-
-     if [[ -f "/usr/bin/mongod" ]]; then
-       version=$(/usr/bin/mongod --version --quiet | grep "db version" | sed -e "s/^db\ version\ v//")
-
-      if version_gt $version 4.0.0; then
-        if version_gt $version 4.0.3; then
-          echo -en "\e[41m[FAIL]\e[0m An SSPL version of MongoDB is present, ${version}"
-          ((FAIL++))
-           STATUS=2
-        else
-          echo -en "\e[32m[PASS]\e[0m The version of MongoDB installed, ${version} is not under the SSPL"
-          ((PASS++))
-        fi
-      else
-         if version_gt $version 3.6.8; then
-          echo -en "\e[41m[FAIL]\e[0m An SSPL version of MongoDB is present, ${version}"
-          ((FAIL++))
-           STATUS=2
-        else
-          echo -en "\e[32m[PASS]\e[0m The version of MongoDB installed, ${version} is not under the SSPL"
-          ((PASS++))
-        fi
-      fi
-
-
-     else
-       echo -en "\e[32m[PASS]\e[0m MongoDB is not installed"
-       ((PASS++))
-     fi
-
-   elif [[ $OS == "CentOS Linux" ]]; then
-
-    if [[ -f "/usr/bin/mongod" ]]; then
-       version=$(/usr/bin/mongod --version --quiet | grep "db version" | sed -e "s/^db\ version\ v//")
-
-
-       if version_gt $version 4.0.0; then
-        if version_gt $version 4.0.3; then
-          echo -en "\e[41m[FAIL]\e[0m An SSPL version of MongoDB is present"
-          ((FAIL++))
-           STATUS=2
-        else
-          echo -en "\e[32m[PASS]\e[0m The version of MongoDB installed is not under the SSPL"
-          ((PASS++))
-        fi
-      else
-         if version_gt $version 3.6.8; then
-          echo -en "\e[41m[FAIL]\e[0m An SSPL version of MongoDB is present"
-          ((FAIL++))
-           STATUS=2
-        else
-          echo -en "\e[32m[PASS]\e[0m The version of MongoDB installed is not under the SSPL"
-          ((PASS++))
-        fi
-      fi
-
-
-
-     else
-       echo -en "\e[32m[PASS]\e[0m MongoDB is not installed"
-       ((PASS++))
-     fi
-
-  else
-    echo "ERROR: Unable to identify distribution"
-    ((FAIL++))
-    STATUS 2
-    return 1
-  fi
-
-
 }
 
 function version_gt() { test "$(printf '%s\n' "$@" | sort -V | head -n 1)" != "$1"; }
@@ -604,6 +527,20 @@ elif [[ $OS == "CentOS Linux" ]]; then
     else
         osv=2
     fi
+elif [[ $OS == "CentOS Stream" ]]; then
+        ost=1
+    if [[ $VER == "8" ]]; then
+        osv=1
+    else
+        osv=2
+    fi
+elif [[ $OS == "Rocky Linux" ]]; then
+        ost=1
+    if [[ $VER =~ "8." ]]; then
+        osv=1
+    else
+        osv=2
+    fi
 else
     ost=0
 fi
@@ -650,8 +587,6 @@ echo -en "\n\nChecking the root account...\n"
 checkRoot
 
 checkAgent
-
-checkMongoDB
 
 
 # Summary
