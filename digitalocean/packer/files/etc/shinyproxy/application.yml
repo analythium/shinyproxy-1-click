@@ -40,4 +40,4 @@ proxy:
 
 logging:
   file:
-    name: shinyproxy.log
+    name: /etc/shinyproxy/logs/shinyproxy.log

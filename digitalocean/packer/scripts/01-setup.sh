@@ -15,6 +15,10 @@ wget https://www.shinyproxy.io/downloads/shinyproxy_${VERSION}_amd64.deb
 apt install ./shinyproxy_${VERSION}_amd64.deb
 rm shinyproxy_${VERSION}_amd64.deb
 
+## Allow ShinyProxy to write logs
+sudo mkdir /etc/shinyproxy/logs
+sudo chown -R shinyproxy:shinyproxy /etc/shinyproxy/logs
+
 ## Restart ShinyProxy
 service shinyproxy restart
 
