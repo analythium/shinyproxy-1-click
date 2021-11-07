@@ -41,3 +41,11 @@ Learn more about using Packer in [the official Packer documentation](https://www
 ## Other Examples
 
 We also use Packer to build some of the Marketplace 1-Click Apps that DigitalOcean maintains. You can see the source code for these scripts [in this repo.](https://github.com/digitalocean/droplet-1-clicks)
+
+## Troubleshooting ShinyProxy
+
+Logs are written into the `/etc/shinyproxy/logs` folder.
+
+Use `tail -f /etc/shinyproxy/logs/shinyproxy.log` to stream the end of the log file.
+
+Check containers with `docker ps`, used ports with `netstat -tln`.
