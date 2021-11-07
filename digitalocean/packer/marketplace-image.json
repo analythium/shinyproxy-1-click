@@ -2,7 +2,7 @@
   "variables": {
     "token": "{{env `DIGITALOCEAN_TOKEN`}}",
     "image_name": "shinyproxy-2-6-0-{{timestamp}}",
-    "apt_packages": "ufw default-jre default-jdk docker docker-compose nginx"
+    "apt_packages": "ufw default-jre default-jdk docker docker-compose nginx net-tools"
   },
   "builders": [
     {
