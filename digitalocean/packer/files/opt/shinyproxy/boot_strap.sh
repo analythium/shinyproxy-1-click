@@ -1,8 +1,6 @@
 #!/bin/bash
 
-# Scripts in this directory will be executed by cloud-init on the first boot of droplets
-# created from your image.  Things like generating passwords, configuration requiring IP address
-# or other items that will be unique to each instance should be done in scripts here.
+set -e
 
 # based on https://github.com/TryGhost/digitalocean-1-click/blob/main/files/opt/digitalocean/boot_strap.sh
 
@@ -16,8 +14,7 @@ echo "$(tput setaf 2)Would you like to set up HTTPS with Let's Encrypt now (Y/N)
 
 read answer
 
-if [ "$answer" != "${answer#[Yy]}" ]
-then
+if [ "$answer" != "${answer#[Yy]}" ]; then
     echo
     echo "This setup will prompt you to to provide the following info:"
     echo "1. Your domain"
