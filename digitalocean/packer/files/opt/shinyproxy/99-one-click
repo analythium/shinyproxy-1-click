@@ -16,4 +16,5 @@ Only these ports are open: 22 (SSH), 80 (HTTP), 443 (HTTPS).
 
 ********************************************************************************
 To delete this message of the day: rm -rf $(readlink -f ${0})
+
 EOF

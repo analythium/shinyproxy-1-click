@@ -41,7 +41,7 @@ ufw --force enable
 
 # make bootstrap script executable
 chmod +x /opt/shinyproxy/boot_strap.sh
-# make copu of .bashrc
+# make copy of .bashrc
 cp -f /root/.bashrc /etc/skel/.bashrc
 # run this 1st time when root logs in via ssh
 echo '/opt/shinyproxy/boot_strap.sh' >> /root/.bashrc 
@@ -64,4 +64,6 @@ echo -------------------------------
 nginx -v
 echo -------------------------------
 ufw version
+echo -------------------------------
+certbot --version
 echo ===============================

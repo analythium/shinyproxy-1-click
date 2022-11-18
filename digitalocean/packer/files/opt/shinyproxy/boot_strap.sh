@@ -10,7 +10,6 @@ export TERM=xterm-256color
 
 myip=$(hostname -I | awk '{print$1}')
 
-echo
 echo "Welcome to your ShinyProxy server!"
 echo
 echo "Would you like to set up HTTPS with Let's Encrypt now (Y/N)?"
@@ -26,8 +25,8 @@ then
     echo "- This can be a comma separated list of domain names:"
     echo "  e.g. $(tput setaf 6)example.com,www.example.com$(tput sgr0)"
     echo "2. Your email address (only used for important account notifications)"
-    echo "$(tput setaf 2)Press enter when you're ready to get started!$(tput sgr0)"
     echo
+    echo "$(tput setaf 2)Press enter when you're ready to get started!$(tput sgr0)"
 
     read wait
 
@@ -52,19 +51,24 @@ then
     certbot --nginx --non-interactive --agree-tos -m $email -d $domain
     systemctl restart nginx
 
-    echo ""
+    echo "\nserver:\n  forward-headers-strategy: native" >> /etc/shinyproxy/application.yml
+    systemctl restart shinyproxy
+
+    echo
     echo "You are all set!"
-    echo ""
+    echo
 
 else
 
-    echo
     echo "When you are ready:"
     echo
     echo "1. Add an A Record -> $(tput setaf 6)${myip}$(tput sgr0) & ensure the DNS has fully propagated"
     echo "2. Run $(tput setaf 6)certbot --nginx -d yourdomain.com$(tput sgr0) and follow the prompts"
     echo "3. Restart Nginx: $(tput setaf 6)systemctl restart nginx$(tput sgr0)"
+    echo "4. Set $(tput setaf 6)forward-headers-strategy: native$(tput sgr0) in /etc/shinyproxy/application.yml"
     echo
+
+    echo "\n# server:\n#   forward-headers-strategy: native" >> /etc/shinyproxy/application.yml
 
 fi
 
