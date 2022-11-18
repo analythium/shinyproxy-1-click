@@ -1,6 +1,6 @@
 # DigitalOcean Marketplace submission
 
-> ShinyProxy 2.5.0 - published 2021-xx-xx
+> ShinyProxy 2.6.1 - published 2022-xx-xx
 
 [![DO button](https://raw.githubusercontent.com/analythium/shinyproxy-1-click/master/digitalocean/images/do-btn-blue.svg)](https://marketplace.digitalocean.com/apps/shinyproxy)
 
