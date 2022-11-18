@@ -22,5 +22,5 @@ server {
         }
 
         ## Set here max file size
-        client_max_body_size 20M;
+        client_max_body_size 100M;
 }
