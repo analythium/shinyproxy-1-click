@@ -1,14 +1,14 @@
 {
   "variables": {
     "token": "{{env `DIGITALOCEAN_TOKEN`}}",
-    "image_name": "shinyproxy-2-6-0-{{timestamp}}",
+    "image_name": "shinyproxy-2-6-1-{{timestamp}}",
     "apt_packages": "ufw default-jre default-jdk docker docker-compose nginx net-tools"
   },
   "builders": [
     {
       "type": "digitalocean",
       "api_token": "{{user `token`}}",
-      "image": "ubuntu-20-04-x64",
+      "image": "ubuntu-22-10-x64",
       "region": "tor1",
       "size": "s-1vcpu-1gb",
       "ssh_username": "root",
