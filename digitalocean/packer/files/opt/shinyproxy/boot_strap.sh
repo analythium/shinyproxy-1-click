@@ -10,9 +10,9 @@ export TERM=xterm-256color
 
 myip=$(hostname -I | awk '{print$1}')
 
-echo "Welcome to your ShinyProxy server!"
+echo "$(tput setaf 2)Welcome to your ShinyProxy server!$(tput sgr0)"
 echo
-echo "Would you like to set up HTTPS with Let's Encrypt now (Y/N)?"
+echo "$(tput setaf 2)Would you like to set up HTTPS with Let's Encrypt now (Y/N)?$(tput sgr0)"
 
 read answer
 
@@ -51,11 +51,13 @@ then
     certbot --nginx --non-interactive --agree-tos -m $email -d $domain
     systemctl restart nginx
 
-    echo "\nserver:\n  forward-headers-strategy: native" >> /etc/shinyproxy/application.yml
+    echo -e "\nserver:\n  forward-headers-strategy: native" >> /etc/shinyproxy/application.yml
     systemctl restart shinyproxy
 
     echo
     echo "You are all set!"
+    echo
+    echo "Verify auto-renewal with $(tput setaf 6)certbot renew --dry-run$(tput sgr0)"
     echo
 
 else
@@ -68,11 +70,13 @@ else
     echo "4. Set $(tput setaf 6)forward-headers-strategy: native$(tput sgr0) in /etc/shinyproxy/application.yml"
     echo
 
-    echo "\n# server:\n#   forward-headers-strategy: native" >> /etc/shinyproxy/application.yml
+    echo -e "\n# server:\n#   forward-headers-strategy: native" >> /etc/shinyproxy/application.yml
 
 fi
 
+# remove bootstrap line
 cp -f /etc/skel/.bashrc /root/.bashrc
 
+# set message fo the day
 cp /opt/shinyproxy/99-one-click /etc/update-motd.d/99-one-click
 chmod 0755 /etc/update-motd.d/99-one-click
