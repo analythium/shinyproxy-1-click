@@ -1,6 +1,6 @@
 proxy:
   title: Shiny Proxy
-  logo-url: https://hub.analythium.io/assets/logo/logo.png
+  logo-url: file:///etc/shinyproxy/logo.png
   landing-page: /
   favicon-path: favicon.ico
   heartbeat-rate: 10000
