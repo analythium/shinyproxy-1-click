@@ -4,7 +4,7 @@
 
 [![DO button](https://raw.githubusercontent.com/analythium/shinyproxy-1-click/master/digitalocean/images/do-btn-blue.svg)](https://marketplace.digitalocean.com/apps/shinyproxy)
 
-OS version: Ubuntu 20.04 (LTS)
+OS version: Ubuntu 22.04 (LTS)
 
 Category: Data Science
 
@@ -12,15 +12,15 @@ Minimum resource: 1 CPU, 1G RAM, 25G SSD
 
 ## Software Included
 
-- OpenJDK 11.0.11 (GPL 2 with the Classpath Exception)
-- Docker CE 20.10.2 (Apache 2)
-- Docker Compose 1.25.0 (Apache 2)
-- ShinyProxy 2.5.0 (Apache 2)
+- OpenJDK 11.0.17 (GPL 2 with the Classpath Exception)
+- Docker CE 20.10.12 (Apache 2)
+- Docker Compose 1.29.2 (Apache 2)
+- ShinyProxy 2.6.1 (Apache 2)
 - Nginx 1.18.0 (2-clause BSD)
 
 ## Change log
 
-- Updated ShinyProxy to version 2.5.0.
+- Updated ShinyProxy to version 2.6.1.
 - Using Packer.
 
 ## Application summary
