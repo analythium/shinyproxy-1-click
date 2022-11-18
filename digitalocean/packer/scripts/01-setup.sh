@@ -33,6 +33,9 @@ ufw allow http
 #ufw allow https
 ufw --force enable
 
+# To uninstall the agent and remove the DO directory
+apt-get purge droplet-agent* -y
+
 echo ===============================
 echo Version info:
 echo 
