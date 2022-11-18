@@ -2,7 +2,7 @@
   "variables": {
     "token": "{{env `DIGITALOCEAN_TOKEN`}}",
     "image_name": "shinyproxy-2-6-1-{{timestamp}}",
-    "apt_packages": "ufw default-jre default-jdk docker docker-compose nginx net-tools"
+    "apt_packages": "cloud-image-utils git jq ufw default-jre default-jdk docker docker-compose nginx net-tools"
   },
   "builders": [
     {
@@ -29,20 +29,38 @@
     },
     {
       "type": "file",
+      "source": "files/opt/",
+      "destination": "/opt/"
+    },
+    {
+      "type": "file",
       "source": "files/var/",
       "destination": "/var/"
     },
     {
       "type": "shell",
+      "environment_vars": [
+        "DEBIAN_FRONTEND=noninteractive",
+        "LC_ALL=C",
+        "LANG=en_US.UTF-8",
+        "LC_CTYPE=en_US.UTF-8"
+      ],
       "inline": [
-        "export DEBIAN_FRONTEND=noninteractive",
+        "cloud-init status --wait",
         "apt -qqy update",
         "apt -qqy -o Dpkg::Options::='--force-confdef' -o Dpkg::Options::='--force-confold' full-upgrade",
-        "apt -qqy -o Dpkg::Options::='--force-confdef' -o Dpkg::Options::='--force-confold' install {{user `apt_packages`}}"
+        "apt -qqy -o Dpkg::Options::='--force-confdef' -o Dpkg::Options::='--force-confold' install {{user `apt_packages`}}",
+        "apt-get -qqy clean"
       ]
     },
     {
       "type": "shell",
+      "environment_vars": [
+        "DEBIAN_FRONTEND=noninteractive",
+        "LC_ALL=C",
+        "LANG=en_US.UTF-8",
+        "LC_CTYPE=en_US.UTF-8"
+      ],
       "scripts": [
         "scripts/01-setup.sh",
         "scripts/90-cleanup.sh",

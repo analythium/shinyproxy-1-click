@@ -39,6 +39,13 @@ ufw allow http
 ufw allow https
 ufw --force enable
 
+# make bootstrap script executable
+chmod +x /opt/shinyproxy/boot_strap.sh
+# make copu of .bashrc
+cp -f /root/.bashrc /etc/skel/.bashrc
+# run this 1st time when root logs in via ssh
+echo '/opt/shinyproxy/boot_strap.sh' >> /root/.bashrc 
+
 # To uninstall the agent and remove the DO directory
 apt-get purge droplet-agent* -y
 

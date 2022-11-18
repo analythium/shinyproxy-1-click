@@ -8,6 +8,7 @@
 ## read token from file ~/.do/doctl-token
 export DIGITALOCEAN_TOKEN=$(cat ~/.do/doctl-token)
 cd digitalocean/packer
+packer validate marketplace-image.json
 packer build marketplace-image.json
 ```
 
