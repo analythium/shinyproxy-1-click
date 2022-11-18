@@ -25,12 +25,18 @@ service shinyproxy restart
 ## Restart Nginx
 service nginx restart
 
+## Install certbot
+snap install core; sudo snap refresh core
+apt-get remove certbot
+snap install --classic certbot
+ln -s /snap/bin/certbot /usr/bin/certbot
+
 # Setting firewall rules
 ufw default deny incoming
 ufw default allow outgoing
 ufw allow ssh
 ufw allow http
-#ufw allow https
+ufw allow https
 ufw --force enable
 
 # To uninstall the agent and remove the DO directory

@@ -9,7 +9,7 @@ cat <<EOF
 
 Welcome to Analythium's 1-Click ShinyProxy Droplet.
 To keep this Droplet secure, the UFW firewall is enabled.
-Only these ports are open: 22 (SSH), 80 (HTTP).
+Only these ports are open: 22 (SSH), 80 (HTTP), 443 (HTTPS).
 
    * Help and more information https://hub.analythium.io/
    * ShinyProxy documentation  https://www.shinyproxy.io/
