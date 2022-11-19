@@ -17,6 +17,7 @@ Minimum resource: 1 CPU, 1G RAM, 25G SSD
 - Docker Compose 1.29.2 (Apache 2)
 - ShinyProxy 2.6.1 (Apache 2)
 - Nginx 1.18.0 (2-clause BSD)
+- Certbot 1.32.0 (Apache 2)
 
 ## Change log
 
