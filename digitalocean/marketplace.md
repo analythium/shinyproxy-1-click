@@ -1,6 +1,6 @@
 # DigitalOcean Marketplace submission
 
-> ShinyProxy 2.6.1 - published 2022-xx-xx
+> ShinyProxy 3.0.0 - published 2023-xx-xx
 
 [![DO button](https://raw.githubusercontent.com/analythium/shinyproxy-1-click/master/digitalocean/images/do-btn-blue.svg)](https://marketplace.digitalocean.com/apps/shinyproxy)
 
@@ -12,17 +12,16 @@ Minimum resource: 1 CPU, 1G RAM, 25G SSD
 
 ## Software Included
 
-- OpenJDK 11.0.17 (GPL 2 with the Classpath Exception)
+- OpenJDK 11.0.18 (GPL 2 with the Classpath Exception)
 - Docker CE 20.10.12 (Apache 2)
 - Docker Compose 1.29.2 (Apache 2)
-- ShinyProxy 2.6.1 (Apache 2)
+- ShinyProxy 3.0.0 (Apache 2)
 - Nginx 1.18.0 (2-clause BSD)
-- Certbot 1.32.0 (Apache 2)
+- Certbot 2.3.0 (Apache 2)
 
 ## Change log
 
-- Updated ShinyProxy to version 2.6.1.
-- Using Packer.
+- Updated ShinyProxy to version 3.0.0.
 
 ## Application summary
 
@@ -40,11 +39,15 @@ Deploy interactive R Shiny applications at scale with ease using the 1-Click Shi
 
 ### Log in using ShinyProxy UI
 
-Once your new droplet with the ShinyProxy 1-Click app is up and running, you can visit your droplet's IP address. Use `admin`/`password` or `user`/`password` as user name and password to log into your ShinyProxy instance. You'll see two demo [R](https://www.r-project.org/) [Shiny](https://shiny.rstudio.com/) applications.
+Once your new droplet with the ShinyProxy 1-Click app is up and running, you can visit your droplet's IP address. Use `admin`/`password` or `user`/`password` as user name and password to log into your ShinyProxy instance. You'll see two demo [R](https://www.r-project.org/) [Shiny](https://shiny.rstudio.com/) applications. Note that it might take 30-60 seconds for all systems to come online: please reload the page if you see an 502 Bad Gateway message from Nginx.
 
 ### Log in through SSH
 
-Use your SSH key you set up with your droplet to log in. Edit `/etc/shinyproxy/application.yml` to [configure](https://shinyproxy.io/documentation/configuration/) your instance. Pay special attention to authentication: it is set to `simple`. You should change user names and passwords, possibly the authentication type.
+Use your SSH key you set up with your droplet to log in: `ssh root@your_droplet_public_ipv4`.
+
+On the 1st SSH login you will be prompted to set up SSL certificate via Let's Encrypt to serve the ShinyProxy over HTTPS. You'll need a domain name with a DNS A record pointing to the Droplet IP address, and an email address.
+
+Edit `/etc/shinyproxy/application.yml` to [configure](https://shinyproxy.io/documentation/configuration/) your instance. Pay special attention to authentication: it is set to `simple`. You should change user names and passwords, possibly the authentication type.
 
 Pull Docker images and add those to the configuration file to [deploy your Shiny apps](https://shinyproxy.io/documentation/deploying-apps/).
 
@@ -52,7 +55,7 @@ Then restart ShinyProxy to take effect using `sudo service shinyproxy restart`.
 
 ### Advanced configuration
 
-Follow the 1-Click App documentation to set up SSL certificate to serve the Shiny apps over [HTTPS](https://hub.analythium.io/docs/shinyproxy-secure), [update the ShinyProxy apps and configs with SSH](https://hub.analythium.io/docs/shinyproxy-update), and to configure continuous integration and continuous delivery (CI/CD) via [webhook](https://hub.analythium.io/docs/shinyproxy-webhook).
+Follow the 1-Click App documentation to manually set up SSL certificate to serve the Shiny apps over [HTTPS](https://hub.analythium.io/docs/shinyproxy-secure), [update the ShinyProxy apps and configs](https://hosting.analythium.io/advanced-configuration-for-shinyproxy/), and to configure continuous integration and continuous delivery (CI/CD) via [webhook](https://hub.analythium.io/docs/shinyproxy-webhook).
 
 ## Support
 
