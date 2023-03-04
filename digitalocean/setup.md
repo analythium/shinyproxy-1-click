@@ -57,57 +57,83 @@ All of these packages are provided by default in the default DigitalOcean base i
 ### Optional in our case: running commands on first boot or first login
 
 Some setup (like setting database passwords or configuration that needs the Droplet's assigned IP address) will need to be run for each new Droplet created from your image.
-Read [here](https://github.com/digitalocean/marketplace-partners/blob/master/getting-started.md#running-commands-on-first-boot) how set up scripts to run on first boot.
+Read [here](https://github.com/digitalocean/marketplace-partners/#running-commands-on-first-boot) how set up scripts to run on first boot.
 
-Some of your image setup may require information that you can't get automatically, like the domain name to use for a service. You may also need to run interactive third-party scripts, like LetsEncrypt's Certbot. Read [this](https://github.com/digitalocean/marketplace-partners/blob/master/getting-started.md#running-commands-on-first-login) section about how to run a script on the user's first login.
+Some of your image setup may require information that you can't get automatically, like the domain name to use for a service. You may also need to run interactive third-party scripts, like LetsEncrypt's Certbot. Read [this](https://github.com/digitalocean/marketplace-partners/#running-commands-on-first-login) section about how to run a script on the user's first login.
 
-### Install application
+### Install software
 
-Using Ubuntu 20.04 (LTS)
+Using Ubuntu 22.04 (LTS)
 
 Software included:
 
-- OpenJDK 11.0.8 (GPL 2 with the Classpath Exception)
-- Docker CE 19.03.8 (Apache 2)
-- Docker Compose 1.25.0 (Apache 2)
-- ShinyProxy 2.4.0 (Apache 2)
+- OpenJDK 11.0.17 (GPL 2 with the Classpath Exception)
+- Docker CE 20.10.12 (Apache 2)
+- Docker Compose 1.29.2 (Apache 2)
+- ShinyProxy 2.6.1 (Apache 2)
 - Nginx 1.18.0 (2-clause BSD)
-
-#### Install Java
+- Certbot 1.32.0 (Apache 2)
 
 Log into your droplet with
 `ssh -i ~/.ssh/YOUR_SSH_KEY root@YOUR_IP_ADDRESS`,
 use your SSH key and IP address.
 
-```bash
-sudo apt-get update
-sudo apt-get upgrade
-sudo apt-get install default-jre
-sudo apt-get install default-jdk
-```
-
-`java -version` should return something like:
+Install software:
 
 ```bash
-openjdk version "11.0.8" 2020-07-14
-OpenJDK Runtime Environment (build 11.0.8+10-post-Ubuntu-0ubuntu120.04)
-OpenJDK 64-Bit Server VM (build 11.0.8+10-post-Ubuntu-0ubuntu120.04, mixed mode, sharing)
+## System packages
+export DEBIAN_FRONTEND=noninteractive
+apt -qqy update
+apt -qqy -o Dpkg::Options::='--force-confdef' -o Dpkg::Options::='--force-confold' full-upgrade
+apt -qqy -o Dpkg::Options::='--force-confdef' -o Dpkg::Options::='--force-confold' \
+  install ufw default-jre default-jdk docker docker-compose nginx net-tools
+
+## Enable Docker
+systemctl daemon-reload
+systemctl restart docker
+systemctl enable docker
+
+## Pull example Docker images
+docker pull registry.gitlab.com/analythium/shinyproxy-hello/hello:latest
+docker pull analythium/shinyproxy-demo:latest
+
+## Install ShinyProxy
+export VERSION="2.6.1"
+wget https://www.shinyproxy.io/downloads/shinyproxy_${VERSION}_amd64.deb
+apt install ./shinyproxy_${VERSION}_amd64.deb
+rm shinyproxy_${VERSION}_amd64.deb
+
+## Allow ShinyProxy to write logs
+sudo mkdir /etc/shinyproxy/logs
+sudo chown -R shinyproxy:shinyproxy /etc/shinyproxy/logs
+
+## Restart ShinyProxy
+service shinyproxy restart
+
+## Restart Nginx
+service nginx restart
+
+## Install certbot
+snap install core; sudo snap refresh core
+apt-get remove certbot
+snap install --classic certbot
+ln -s /snap/bin/certbot /usr/bin/certbot
+
+# Setting firewall rules
+ufw default deny incoming
+ufw default allow outgoing
+ufw allow ssh
+ufw allow http
+ufw allow https
+ufw --force enable
 ```
 
-#### Install Docker CE and Docker Compose
-
-```bash
-sudo apt-get install docker
-sudo apt-get install docker-compose
-```
-
-Check to see if Docker is running `sudo service docker status`.
-`docker --version` and `docker-compose --version` will return version in use.
+### Docker startup
 
 ShinyProxy needs to connect to the docker daemon to spin up the containers for the apps.
 By default ShinyProxy will do so on port 2375 of the docker host.
 In order to allow for connections on port 2375, the startup options need to be edited
-following the ShinyProxy [guide](https://www.shinyproxy.io/getting-started/#docker-startup-options).
+following the ShinyProxy [guide](https://www.shinyproxy.io/documentation/getting-started/#docker-startup-options).
 
 On an Ubuntu 16.04 LTS or higher that uses systemd,
 one can create a file `/etc/systemd/system/docker.service.d/override.conf`:
@@ -135,83 +161,12 @@ sudo systemctl enable docker
 
 The `sudo systemctl enable docker` enables Docker service start when the system boots.
 
-#### Install ShinyProxy
+#### ShinyProxy assets
 
-```bash
-sudo wget https://www.shinyproxy.io/downloads/shinyproxy_2.4.0_amd64.deb
-sudo apt install ./shinyproxy_2.4.0_amd64.deb
-sudo rm shinyproxy_2.4.0_amd64.deb
-```
+Check the [`/etc/shinyproxy`](./packer/files/etc/shinyproxy/) folder for the files needed for ShinyProxy,
+especially the [`application.yml`](./packer/files/etc/shinyproxy/application.yml) file.
 
-Pull demo Docker images:
-
-```bash
-sudo docker pull analythium/shinyproxy-demo:latest
-sudo docker pull registry.gitlab.com/analythium/shinyproxy-hello/hello:latest
-```
-
-Add favicon and create `application.yml`
-
-```bash
-cd /etc/shinyproxy
-sudo wget https://hub.analythium.io/assets/favicon.ico
-sudo touch application.yml
-```
-
-Copy these configs using `vim /etc/shinyproxy/application.yml`:
-
-```vim
-proxy:
-  title: Open Analytics Shiny Proxy by Analythium
-  logo-url: https://hub.analythium.io/assets/logo/logo.png
-  landing-page: /
-  favicon-path: favicon.ico
-  heartbeat-rate: 10000
-  heartbeat-timeout: 600000
-  port: 8080
-  authentication: simple
-  admin-groups: admins
-  # Example: 'simple' authentication configuration
-  users:
-  - name: admin
-    password: password
-    groups: admins
-  - name: user
-    password: password
-    groups: users
-  # Docker configuration
-  docker:
-    cert-path: /home/none
-    url: http://localhost:2375
-    port-range-start: 20000
-  specs:
-  - id: 01_hello
-    display-name: Hello Shiny App
-    description: A simple reactive histogram
-    container-cmd: ["R", "-e", "shiny::runApp('/root/app')"]
-    container-image: registry.gitlab.com/analythium/shinyproxy-hello/hello:latest
-    logo-url: https://github.com/analythium/shinyproxy-1-click/raw/master/digitalocean/images/app-hist.png
-    access-groups: [admins, users]
-  - id: 02_hello
-    display-name: Demo Shiny App
-    description: App with sliders and large file upload
-    container-cmd: ["R", "-e", "shiny::runApp('/root/app')"]
-    container-image: analythium/shinyproxy-demo:latest
-    logo-url: https://github.com/analythium/shinyproxy-1-click/raw/master/digitalocean/images/app-dots.png
-    access-groups: [admins]
-
-logging:
-  file:
-    shinyproxy.log
-
-spring:
-  servlet:
-    multipart:
-      max-file-size: 200MB
-      max-request-size: 200MB
-```
-
-Edit `/etc/shinyproxy/application.yml` as required (file size limits, apps, `heartbeat-timeout`),
+Edit this `/etc/shinyproxy/application.yml` as required (apps, `heartbeat-timeout`),
 then restart ShinyProxy to take effect using `sudo service shinyproxy restart`.
 
 Besides adding apps and permission, edits were made to increase file size limit

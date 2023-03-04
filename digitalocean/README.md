@@ -1,12 +1,12 @@
 # ShinyProxy 1-Click Image
 
-> Deploy interactive R Shiny applications at scale with ease using the 1-Click ShinyProxy app. ShinyProxy builds on enterprise Java and Docker technology to provide authentication, authorization, resource allocation, and monitoring.
+> Deploy interactive Shiny for R and Python applications at scale with ease using the 1-Click ShinyProxy app. ShinyProxy builds on enterprise Java and Docker technology to provide authentication, authorization, resource allocation, and monitoring.
 
 [![DO button](https://raw.githubusercontent.com/analythium/shinyproxy-1-click/master/digitalocean/images/do-btn-blue.svg)](https://marketplace.digitalocean.com/apps/shinyproxy?refcode=a8041699739d)
 
 ## Summary
 
-ShinyProxy is an open source platform to deploy R Shiny applications at scale in companies and larger organizations. Shiny applications are interactive web applications for bringing data science to end users.
+ShinyProxy is an open source platform to deploy Shiny for R and Python applications at scale in companies and larger organizations. Shiny applications are interactive web applications for bringing data science to end users.
 
 ShinyProxy builds on enterprise Java and Docker technology to meet corporate needs in deploying Shiny applications, such as authentication, authorization (LDAP, ActiveDirectory, Social login, etc.) and secure traffic, allocating resources (CPU, memory limits) per Shiny application, usage statistics and administrator views for monitoring, API for integrating of Shiny apps in larger applications.
 
