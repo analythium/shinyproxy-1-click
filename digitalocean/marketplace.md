@@ -1,6 +1,6 @@
 # DigitalOcean Marketplace submission
 
-> ShinyProxy 3.0.0 - published 2023-xx-xx
+> ShinyProxy 3.0.2 - published 2024-xx-xx
 
 [![DO button](https://raw.githubusercontent.com/analythium/shinyproxy-1-click/master/digitalocean/images/do-btn-blue.svg)](https://marketplace.digitalocean.com/apps/shinyproxy)
 
@@ -21,7 +21,7 @@ Minimum resource: 1 CPU, 1G RAM, 25G SSD
 
 ## Change log
 
-- Updated ShinyProxy to version 3.0.0.
+- Updated ShinyProxy to version 3.0.2.
 
 ## Application summary
 
@@ -39,7 +39,7 @@ Deploy interactive R Shiny applications at scale with ease using the 1-Click Shi
 
 ### Log in using ShinyProxy UI
 
-Once your new droplet with the ShinyProxy 1-Click app is up and running, you can visit your droplet's IP address. Use `admin`/`password` or `user`/`password` as user name and password to log into your ShinyProxy instance. You'll see two demo [R](https://www.r-project.org/) [Shiny](https://shiny.rstudio.com/) applications. Note that it might take 30-60 seconds for all systems to come online: please reload the page if you see an 502 Bad Gateway message from Nginx.
+Once your new droplet with the ShinyProxy 1-Click app is up and running, you can visit your droplet's IP address. Use `admin`/`password` or `user`/`password` as user name and password to log into your ShinyProxy instance. You'll see two demo [R](https://www.r-project.org/) [Shiny](https://shiny.posit.co/) applications. Note that it might take 30-60 seconds for all systems to come online: please reload the page if you see an 502 Bad Gateway message from Nginx.
 
 ### Log in through SSH
 
@@ -55,7 +55,7 @@ Then restart ShinyProxy to take effect using `sudo service shinyproxy restart`.
 
 ### Advanced configuration
 
-Follow the 1-Click App documentation to manually set up SSL certificate to serve the Shiny apps over [HTTPS](https://hub.analythium.io/docs/shinyproxy-secure), [update the ShinyProxy apps and configs](https://hosting.analythium.io/advanced-configuration-for-shinyproxy/), and to configure continuous integration and continuous delivery (CI/CD) via [webhook](https://hub.analythium.io/docs/shinyproxy-webhook).
+Follow the 1-Click App documentation to manually set up SSL certificate to serve the Shiny apps over [HTTPS](https://hosting.analythium.io/custom-domain-and-security-for-shinyproxy-with-nginx/), [update the ShinyProxy apps and configs](https://hosting.analythium.io/advanced-configuration-for-shinyproxy/), and to configure continuous integration and continuous delivery (CI/CD) via [webhook](https://hub.analythium.io/docs/shinyproxy-webhook).
 
 ## Support
 
