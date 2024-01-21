@@ -13,11 +13,11 @@ Minimum resource: 1 CPU, 1G RAM, 25G SSD
 ## Software Included
 
 - OpenJDK 11.0.18 (GPL 2 with the Classpath Exception)
-- Docker CE 20.10.12 (Apache 2)
+- Docker CE 24.0.5 (Apache 2)
 - Docker Compose 1.29.2 (Apache 2)
-- ShinyProxy 3.0.0 (Apache 2)
+- ShinyProxy 3.0.2 (Apache 2)
 - Nginx 1.18.0 (2-clause BSD)
-- Certbot 2.3.0 (Apache 2)
+- Certbot 2.8.0 (Apache 2)
 
 ## Change log
 
