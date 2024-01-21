@@ -4,7 +4,7 @@
 
 > This document guides you through TLS setup for ShinyProxy 1-click app
 
-[![DO button](https://raw.githubusercontent.com/analythium/shinyproxy-1-click/master/digitalocean/images/do-btn-blue.svg)](https://marketplace.digitalocean.com/apps/shinyproxy?refcode=a8041699739d)
+[![DO button](https://raw.githubusercontent.com/analythium/shinyproxy-1-click/master/digitalocean/images/do-btn-blue.svg)](https://marketplace.digitalocean.com/apps/shinyproxy?refcode=a8041699739d&action=deploy)
 
 ## Open up https port
 

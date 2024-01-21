@@ -2,7 +2,7 @@
 
 > This document guides you through the 1-click setup process for ShinyProxy
 
-[![DO button](https://raw.githubusercontent.com/analythium/shinyproxy-1-click/master/digitalocean/images/do-btn-blue.svg)](https://marketplace.digitalocean.com/apps/shinyproxy?refcode=a8041699739d)
+[![DO button](https://raw.githubusercontent.com/analythium/shinyproxy-1-click/master/digitalocean/images/do-btn-blue.svg)](https://marketplace.digitalocean.com/apps/shinyproxy?refcode=a8041699739d&action=deploy)
 
 Using the DigitalOcean Marketplace, we can deliver a truly seamless experience for users,
 creating the ability for developers to deploy fully-tested app environments with the click of a button.
