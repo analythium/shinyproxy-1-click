@@ -4,6 +4,9 @@
 
 [Packer](https://www.packer.io/intro) is a tool for creating images from a single source configuration. Using this Packer template reduces the entire process of creating, configuring, validating, and snapshotting a build Droplet to a single command:
 
+Install [Packer](https://developer.hashicorp.com/packer/install), then you'll need the [Digitalocean plugin](https://developer.hashicorp.com/packer/integrations/digitalocean/digitalocean) to be installed with:
+`packer plugins install github.com/digitalocean/digitalocean`.
+
 ```bash
 ## read token from file ~/.do/doctl-token
 export DIGITALOCEAN_TOKEN=$(cat ~/.do/doctl-token)
