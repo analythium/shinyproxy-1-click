@@ -9,12 +9,6 @@ systemctl enable docker
 docker pull registry.gitlab.com/analythium/shinyproxy-hello/hello:latest
 docker pull analythium/shinyproxy-demo:latest
 
-## Install ShinyProxy
-export VERSION="3.1.0"
-wget https://www.shinyproxy.io/downloads/shinyproxy_${VERSION}_amd64.deb
-apt install ./shinyproxy_${VERSION}_amd64.deb
-rm shinyproxy_${VERSION}_amd64.deb
-
 ## Allow ShinyProxy to write logs
 sudo mkdir /etc/shinyproxy/logs
 sudo chown -R shinyproxy:shinyproxy /etc/shinyproxy/logs
@@ -25,12 +19,6 @@ service shinyproxy restart
 ## Restart Nginx
 service nginx restart
 
-## Install certbot
-snap install core; sudo snap refresh core
-apt-get remove certbot
-snap install --classic certbot
-ln -s /snap/bin/certbot /usr/bin/certbot
-
 # Setting firewall rules
 ufw default deny incoming
 ufw default allow outgoing
@@ -40,11 +28,11 @@ ufw allow https
 ufw --force enable
 
 # make bootstrap script executable
-chmod +x /opt/shinyproxy/boot_strap.sh
+sudo chmod +x /opt/shinyproxy/boot_strap.sh
 # make copy of .bashrc
-cp -f /root/.bashrc /etc/skel/.bashrc
+sudo cp -f /root/.bashrc /etc/skel/.bashrc
 # run this 1st time when root logs in via ssh
-echo '/opt/shinyproxy/boot_strap.sh' >> /root/.bashrc 
+sudo echo '/opt/shinyproxy/boot_strap.sh' >> /root/.bashrc 
 
 # To uninstall the agent and remove the DO directory
 apt-get purge droplet-agent* -y
@@ -67,3 +55,11 @@ ufw version
 echo -------------------------------
 certbot --version
 echo ===============================
+
+# test
+echo !!!!!!!!!!!!!!!!!!!!!!! TESTING START !!!!!!!!!!!!!!!!!!!!!
+ls -al /opt/shinyproxy/
+ls -al /etc/shinyproxy/
+systemctl status nginx
+systemctl status shinyproxy
+echo !!!!!!!!!!!!!!!!!!!!!!! TESTING END !!!!!!!!!!!!!!!!!!!!!
