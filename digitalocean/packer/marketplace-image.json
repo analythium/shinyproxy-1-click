@@ -2,7 +2,7 @@
   "variables": {
     "token": "{{env `DIGITALOCEAN_TOKEN`}}",
     "image_name": "shinyproxy-3-1-1-{{timestamp}}",
-    "apt_packages": "cloud-image-utils git jq ufw default-jre default-jdk docker.io docker-compose nginx net-tools"
+    "apt_packages": "cloud-image-utils git jq ufw default-jre default-jdk nginx net-tools apt-transport-https curl"
   },
   "builders": [
     {
