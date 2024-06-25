@@ -32,7 +32,7 @@ sudo chmod +x /opt/shinyproxy/boot_strap.sh
 # make copy of .bashrc
 sudo cp -f /root/.bashrc /etc/skel/.bashrc
 # run this 1st time when root logs in via ssh
-sudo echo '/opt/shinyproxy/boot_strap.sh' >> /root/.bashrc 
+sudo echo '/opt/shinyproxy/boot_strap.sh' >> /root/.bashrc
 
 # To uninstall the agent and remove the DO directory
 apt-get purge droplet-agent* -y
