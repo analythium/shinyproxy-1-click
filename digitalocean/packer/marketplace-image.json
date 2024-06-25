@@ -1,14 +1,14 @@
 {
   "variables": {
     "token": "{{env `DIGITALOCEAN_TOKEN`}}",
-    "image_name": "shinyproxy-3-1-0-{{timestamp}}",
+    "image_name": "shinyproxy-3-1-1-{{timestamp}}",
     "apt_packages": "cloud-image-utils git jq ufw default-jre default-jdk docker docker-compose nginx net-tools"
   },
   "builders": [
     {
       "type": "digitalocean",
       "api_token": "{{user `token`}}",
-      "image": "ubuntu-22-04-x64",
+      "image": "ubuntu-24-04-x64",
       "region": "tor1",
       "size": "s-1vcpu-1gb",
       "ssh_username": "root",
@@ -20,7 +20,8 @@
       "type": "shell",
       "inline": [
         "cloud-init status --wait"
-      ]
+      ],
+      "valid_exit_codes": [0, 2]
     },
     {
       "type": "file",
@@ -46,7 +47,8 @@
         "apt -qqy -o Dpkg::Options::='--force-confdef' -o Dpkg::Options::='--force-confold' full-upgrade",
         "apt -qqy -o Dpkg::Options::='--force-confdef' -o Dpkg::Options::='--force-confold' install {{user `apt_packages`}}",
         "apt-get -qqy clean"
-      ]
+      ],
+      "valid_exit_codes": [0, 2]
     },
     {
       "type": "shell",
@@ -58,7 +60,8 @@
       ],
       "scripts": [
         "scripts/01-install.sh"
-      ]
+      ],
+      "valid_exit_codes": [0, 2]
     },
     {
       "type": "file",
@@ -75,7 +78,8 @@
       ],
       "scripts": [
         "scripts/02-setup.sh"
-      ]
+      ],
+      "valid_exit_codes": [0, 2]
     },
     {
       "type": "shell",
@@ -88,7 +92,8 @@
       "scripts": [
         "scripts/90-cleanup.sh",
         "scripts/99-img-check.sh"
-      ]
+      ],
+      "valid_exit_codes": [0, 2]
     }
   ]
 }

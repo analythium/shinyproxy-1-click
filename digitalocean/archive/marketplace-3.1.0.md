@@ -1,10 +1,10 @@
 # DigitalOcean Marketplace submission
 
-> ShinyProxy 3.1.1 - created 2024-06-25
+> ShinyProxy 3.1.0 - published 2024-05-08
 
 [![DO button](https://raw.githubusercontent.com/analythium/shinyproxy-1-click/master/digitalocean/images/do-btn-blue.svg)](https://marketplace.digitalocean.com/apps/shinyproxy)
 
-OS version: Ubuntu 24.04 (LTS) (see quirks related to >22 images [here](https://github.com/digitalocean/marketplace-partners/issues/186#issuecomment-2161971436))
+OS version: Ubuntu 22.04 (LTS)
 
 Category: Data Science
 
@@ -15,13 +15,13 @@ Minimum resource: 1 CPU, 1G RAM, 25G SSD
 - OpenJDK 11.0.22 (GPL 2 with the Classpath Exception)
 - Docker CE 24.0.5 (Apache 2)
 - Docker Compose 1.29.2 (Apache 2)
-- ShinyProxy 3.1.1 (Apache 2)
+- ShinyProxy 3.1.0 (Apache 2)
 - Nginx 1.18.0 (2-clause BSD)
 - Certbot 2.10.0 (Apache 2)
 
 ## Change log
 
-- Updated ShinyProxy to version 3.1.1 and OS version to Ubuntu 24.04.
+- Updated ShinyProxy to version 3.1.0.
 
 ## Application summary
 
