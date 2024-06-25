@@ -37,6 +37,7 @@ sudo echo '/opt/shinyproxy/boot_strap.sh' >> /root/.bashrc
 # To uninstall the agent and remove the DO directory
 apt-get purge droplet-agent* -y
 
+# Print out versions for 1-click submission
 echo ===============================
 echo Version info:
 echo 
@@ -56,7 +57,7 @@ echo -------------------------------
 certbot --version
 echo ===============================
 
-# test
+# Test folder settings and services
 echo !!!!!!!!!!!!!!!!!!!!!!! TESTING START !!!!!!!!!!!!!!!!!!!!!
 ls -al /opt/shinyproxy/
 ls -al /etc/shinyproxy/
