@@ -12,7 +12,8 @@ sudo wget -nv https://www.shinyproxy.io/downloads/shinyproxy_${VERSION}_amd64.de
 sudo apt install -y ./shinyproxy_${VERSION}_amd64.deb
 sudo rm shinyproxy_${VERSION}_amd64.deb
 
-## Install certbot
+## Install nginx and certbot
+sudo apt -qqy install nginx
 snap install core; sudo snap refresh core
 apt-get remove certbot
 snap install --classic certbot
