@@ -2,7 +2,7 @@
 
 ## Install ShinyProxy
 export VERSION="3.1.1"
-sudo wget https://www.shinyproxy.io/downloads/shinyproxy_${VERSION}_amd64.deb
+sudo wget -nv https://www.shinyproxy.io/downloads/shinyproxy_${VERSION}_amd64.deb
 sudo apt install -y ./shinyproxy_${VERSION}_amd64.deb
 sudo rm shinyproxy_${VERSION}_amd64.deb
 
