@@ -43,7 +43,7 @@ echo
 echo -------------------------------
 echo ShinyProxy $VERSION
 echo -------------------------------
-java -version 
+java -version
 echo -------------------------------
 docker -v
 echo -------------------------------
