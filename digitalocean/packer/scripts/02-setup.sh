@@ -61,5 +61,6 @@ echo !!!!!!!!!!!!!!!!!!!!!!! TESTING START !!!!!!!!!!!!!!!!!!!!!
 ls -al /opt/shinyproxy/
 ls -al /etc/shinyproxy/
 systemctl status nginx
+systemctl status docker
 systemctl status shinyproxy
 echo !!!!!!!!!!!!!!!!!!!!!!! TESTING END !!!!!!!!!!!!!!!!!!!!!
