@@ -46,8 +46,7 @@
         "apt -qqy -o Dpkg::Options::='--force-confdef' -o Dpkg::Options::='--force-confold' full-upgrade",
         "apt -qqy -o Dpkg::Options::='--force-confdef' -o Dpkg::Options::='--force-confold' install {{user `apt_packages`}}",
         "apt-get -qqy clean"
-      ],
-      "valid_exit_codes": [0, 2]
+      ]
     },
     {
       "type": "shell",
@@ -59,8 +58,7 @@
       ],
       "scripts": [
         "scripts/01-install.sh"
-      ],
-      "valid_exit_codes": [0, 2]
+      ]
     },
     {
       "type": "file",
@@ -77,8 +75,7 @@
       ],
       "scripts": [
         "scripts/02-setup.sh"
-      ],
-      "valid_exit_codes": [0, 2]
+      ]
     },
     {
       "type": "shell",
@@ -91,8 +88,7 @@
       "scripts": [
         "scripts/90-cleanup.sh",
         "scripts/99-img-check.sh"
-      ],
-      "valid_exit_codes": [0, 2]
+      ]
     }
   ]
 }
