@@ -1,6 +1,6 @@
 # DigitalOcean Marketplace submission
 
-> ShinyProxy 3.2.0 - created 2025-07-11
+> ShinyProxy 3.1.1 - created 2024-06-25
 
 [![DO button](https://raw.githubusercontent.com/analythium/shinyproxy-1-click/master/digitalocean/images/do-btn-blue.svg)](https://marketplace.digitalocean.com/apps/shinyproxy)
 
@@ -12,15 +12,16 @@ Minimum resource: 1 CPU, 1G RAM, 25G SSD
 
 ## Software Included
 
-- OpenJDK 21.0.7 (GPL 2 with the Classpath Exception)
-- Docker CE 28.3.2 (Apache 2)
-- ShinyProxy 3.2.0 (Apache 2)
+- OpenJDK 17.0.11 (GPL 2 with the Classpath Exception)
+- Docker CE 27.0.1 (Apache 2)
+- Docker Compose 1.29.2 (Apache 2)
+- ShinyProxy 3.1.1 (Apache 2)
 - Nginx 1.24.0 (2-clause BSD)
-- Certbot 4.1.1 (Apache 2)
+- Certbot 2.11.0 (Apache 2)
 
 ## Change log
 
-- Updated ShinyProxy to version 3.2.0.
+- Updated ShinyProxy to version 3.1.1 and OS version to Ubuntu 24.04.
 
 ## Application summary
 
