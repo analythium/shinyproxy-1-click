@@ -48,7 +48,7 @@ java -version
 echo -------------------------------
 docker -v
 echo -------------------------------
-docker-compose -v
+docker compose version
 echo -------------------------------
 nginx -v
 echo -------------------------------

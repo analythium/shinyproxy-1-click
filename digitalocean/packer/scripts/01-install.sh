@@ -7,7 +7,7 @@ sudo apt -qqy update
 sudo apt -qqy install docker-ce docker-ce-cli containerd.io # docker-buildx-plugin docker-compose-plugin docker-compose
 
 ## Install ShinyProxy
-export VERSION="3.2.0"
+export VERSION="3.2.2"
 sudo wget -nv https://www.shinyproxy.io/downloads/shinyproxy_${VERSION}_amd64.deb
 sudo apt install -y ./shinyproxy_${VERSION}_amd64.deb
 sudo rm shinyproxy_${VERSION}_amd64.deb
